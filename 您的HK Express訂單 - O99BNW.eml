@@ -1,0 +1,2939 @@
+Delivered-To: wingyiu1985@gmail.com
+Received: by 2002:a05:7208:b002:b0:95:45b1:11ba with SMTP id z2csp5220601rba;
+        Sat, 18 Jan 2025 03:06:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFs2lFa5CVF8sKXYWebRkxkjcVOtFMQS4CHhzwUtQ0hbkZe6vBhJ0lbwYC49l+GhIdGkRjw
+X-Received: by 2002:a05:620a:28c1:b0:7b6:fc3a:f9a9 with SMTP id af79cd13be357-7be6327cf4dmr1215596685a.36.1737198403927;
+        Sat, 18 Jan 2025 03:06:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737198403; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ENC081pmYh1Y+5evUDyNvzzQY6uNzbq0FTAL9AwhSFb8k7pJ7uHPpzAmwRf86UP/dZ
+         l/KAsoWpXd7K4W4qcT2qsTJOJcw0qQWyUbMe0cl/4gqk5rJGS11iSjHCNFBzS6ai1EAb
+         bo/u7uW2va795i1LM64djGWQa4INsrpCezzlDn50tLLp+qfghGXFlaYoGLtPQ1NrdPaU
+         uJam5+M+AIHg4RMbHpmLaXOVMCYfjTNx4KgGsZfPhSIzkATPB1OzGXwe3iaSUGW92kYw
+         lnJ90D0054k4MwFYsx+YQy169oun/Br0LiEq+PeEe4LPSKFmt3QmmiYmkwtImzhtSyjq
+         y2Bw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=6eTP9OQxYoS9n9NMPwjJ8WBKBxmejtkKxMXULF6xDTw=;
+        fh=zHMEQCNenEkewK2jnuiEiEO00SAjjlE2O/kLD0IYK84=;
+        b=e7kNtgbu4uCKUGY2e+m/Gv2xaXz7vJgVh8jjRmsEsBAqfbqWvz8q09bUMJIzhBqPPw
+         ibkGpcf06nbFK/k6ozxhwVewFVHpjSzadLh1Vz26bRhbnNvw4DFc6SA82MJ5LRwKLdpe
+         NlCloU7zsY10Zmoqk/ro3Sk+L2YaxZcPpjjUDErh5C4mY2Jwm+ilPoaRItqn8lvXuFpS
+         /b+l+fABUk0MirKQt6Dp6Tp6MbV7wFXmFuUexHUTmbaSCP1F6czV8pGOePHMQf29gt5d
+         1UTFXLuPbkBhR8kTsWlSEporfDZAKOvHF/emvRYKBr3nYzi/f5A1YbxcjxiADtLnBWq+
+         jzjg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@yourbooking.hkexpress.com header.s=hke header.b=f5vtgJp7;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Bve9FnlU;
+       spf=pass (google.com: domain of bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com designates 149.72.192.247 as permitted sender) smtp.mailfrom="bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=hkexpress.com
+Return-Path: <bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com>
+Received: from o1.sg.yourbooking.hkexpress.com (o1.sg.yourbooking.hkexpress.com. [149.72.192.247])
+        by mx.google.com with ESMTPS id af79cd13be357-7be6f47f965si80863485a.652.2025.01.18.03.06.43
+        for <wingyiu1985@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 18 Jan 2025 03:06:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com designates 149.72.192.247 as permitted sender) client-ip=149.72.192.247;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@yourbooking.hkexpress.com header.s=hke header.b=f5vtgJp7;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=Bve9FnlU;
+       spf=pass (google.com: domain of bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com designates 149.72.192.247 as permitted sender) smtp.mailfrom="bounces+10639519-7a34-wingyiu1985=gmail.com@sg.yourbooking.hkexpress.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=hkexpress.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yourbooking.hkexpress.com;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:cc:
+	content-type:from:subject:to;
+	s=hke; bh=6eTP9OQxYoS9n9NMPwjJ8WBKBxmejtkKxMXULF6xDTw=;
+	b=f5vtgJp7XWnL3g6hFo56jowCpj9n6r/W+UcI2F7mJYrDVM6EhB/eGUr95+0osIGbT2xY
+	eJa86dcFH+jV41IbamfANAy14XcTwQ8orgVHDi/BYUKkqNwS/Mb4ntUCT9Ze3C5MY3CgDQ
+	l+LfC66qIMijeCWvu1DBXew9UQrcEbb+M4SpiTIa9RllU5i3+Yirq1XhcAf9Ek7x0QXaA/
+	pk1Ocp9WMB1eX4FfwT3CQqsaWT4rjncnEx6EPal/heQJW99R5QDgiqPeOhfKZL9vIl7QbV
+	ZF21rTZSH/FftplGl+KnzBRnjkq6K3NtvqUzkwbl95fojJgzsbLI7DUYpc9PPb3g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:cc:
+	content-type:from:subject:to;
+	s=smtpapi; bh=6eTP9OQxYoS9n9NMPwjJ8WBKBxmejtkKxMXULF6xDTw=;
+	b=Bve9FnlU9Tke6PGWCm0JzhxHB13mD0C4OP2VT+t1pKeKb/9Qp5+rHKO++L7EBGGApDK5
+	iEQCPXAzme67N3mAli+1DcRE8ciGoV9S0bxXklFtA3SpU+mTUc8jeu45SnF5OdweqJv/uF
+	RpyqpyuKw8CIcHjZ8/6+MFRqatW3Ib2WY=
+Received: by recvd-6b976cf9cd-8cspx with SMTP id recvd-6b976cf9cd-8cspx-1-678B8B43-10
+	2025-01-18 11:06:43.185691189 +0000 UTC m=+5579074.863438104
+Received: from MTA2Mzk1MTk (unknown)
+	by geopod-ismtpd-12 (SG) with HTTP
+	id hEI7OW8yQ6apSB9KalTX_g
+	Sat, 18 Jan 2025 11:06:43.076 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=7d44ae2edb901b7d8a6c6bf16cf9a05108713ad8c58d0b19cce75fd87189
+Date: Sat, 18 Jan 2025 11:06:43 +0000 (UTC)
+From: HK Express Reservation <noreply@booking.hkexpress.com>
+Mime-Version: 1.0
+Message-ID: <hEI7OW8yQ6apSB9KalTX_g@geopod-ismtpd-12>
+Subject: =?UTF-8?B?5oKo55qESEsgRXhwcmVzc+ioguWWrg==?= - O99BNW
+X-Feedback-ID: 10639519:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2Ephzq6RH8CEmqYm3If7cb8nbFHc557m41Cx6w9pZ4vQuYIYimH=2FcCbNadH?=
+ =?us-ascii?Q?FcKeKS218U=2F8fQEW5fJZV+ga2mdTaWj1kfCMNV2?=
+ =?us-ascii?Q?8xffeTzkszTSJJNwYZOEM0D8knhU=2F=2FHVvt0tEEi?=
+ =?us-ascii?Q?BW0pixD35QeIozkyIutvHBh99jvpFgk1b9mr1IQ?=
+ =?us-ascii?Q?wWq28SLMnnabdr7PHFHD4xGvyzsBugr0VEbnP+N?=
+ =?us-ascii?Q?fa1KdzpdSkVEIzRxdfTfRPh8LO7qcDTdW=2Fqd9wK?=
+ =?us-ascii?Q?1EpHuAS2E9f3Qu8KQYvzTDHSBw=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprDsPyUTnMagHRCjb?=
+ =?us-ascii?Q?=2F65Gubl2mcNaPwX0sPPSyUUe6kI+Rc3L97Ug09M?=
+ =?us-ascii?Q?DSfvH90YlVzMdNw5dBgU3oTG9xE8+JGe=2F6k2Pfc?=
+ =?us-ascii?Q?yrrH5i0f1TFz3BIFgiKePeVJARytEql6sWQnRWj?=
+ =?us-ascii?Q?Olk54sPVATrMDwRxnp?=
+To: wingyiu1985@gmail.com
+X-Entity-ID: u001.5YeAqcX41xAuPWtlVSMk2w==
+
+--7d44ae2edb901b7d8a6c6bf16cf9a05108713ad8c58d0b19cce75fd87189
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR=
+9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2FMRB00uqKj1p69nKu7-2FsDFT0ewvyte-2BHb4zMKgvsh=
+KF5T-2BBX2UlC3JynnHMVO4ZIWooEJ6yLYxqZMosCScMk66dH7YUA2b7UMgbKgIlBEmGPvsT-2F=
+eAUoh6KzLFV-2F9Vu-2BrVy82u-2FMz5MVTHsp9mDDfCLLQY_Tj27qEYzp-2F2o8TAQfd7eeZ1X=
+Rrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjum=
+uDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx=
+8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe5xf8-2FR-2BDCBxEfSmJuGRBUWk-2BlMxR=
+eNZuT7I6et2TAwCIy8PJX3N3ASGLdHRKo5bMoqv-2BdeoXQ4sr1acB9vmtxOoCwQEHiMuCxgyDl=
+VoMH42pHvUPz999mT-2FI3j1a7kJ1IOHHztNWNnkgZbE-2FPOnS5U-3D )
+
+=20
+
+=E6=82=A8=E7=9A=84=E9=A3=9B=E8=A1=8C=E5=A5=97=E7=A5=A8=E8=A8=82=E5=96=AE =
+=E6=82=A8=E7=9A=84=E8=88=AA=E7=8F=AD=E8=A8=82=E5=96=AE
+
+
+
+=E6=82=A8=E5=A5=BD *Wing Yiu* =EF=BC=8C
+
+=E5=A4=9A=E8=AC=9D=E6=82=A8=E9=81=B8=E4=B9=98HK Express=E3=80=82=E6=88=91=
+=E5=80=91=E7=A2=BA=E8=AA=8D=E6=82=A8=E5=B0=87=E6=96=BC *2025=E5=B9=B43=E6=
+=9C=8814=E6=97=A5* =E6=98=9F=E6=9C=9F=E6=98=9F=E6=9C=9F=E4=BA=94=E5=89=8D=
+=E5=BE=80 *=E9=AB=98=E6=9D=BE* =E3=80=82=E4=BB=A5=E4=B8=8B=E6=98=AF=E6=82=
+=A8=E7=9A=84=E8=A1=8C=E7=A8=8B=E8=B3=87=E6=96=99=E5=8F=8A=E4=BB=98=E6=AC=BE=
+=E8=A9=B3=E6=83=85=E3=80=82
+
+=E7=A5=9D=E9=96=A3=E4=B8=8B=E6=97=85=E9=80=94=E6=84=89=E5=BF=AB=E3=80=82
+
+=E7=A5=9D=E9=96=A3=E4=B8=8B=E6=97=85=E9=80=94=E6=84=89=E5=BF=AB=E3=80=82
+
+=E8=A8=82=E5=96=AE=E7=B7=A8=E8=99=9F / PNR
+
+O99BNW
+
+( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR=
+9BTTWIY0LqLGRg12n7PtbGuQMOPaLRXyuxglAf8CuxGNcBEmyex-2FopmTr2wiWfJTPe6lQaLO4=
+celCzcpyiCilVCaKX7Vlpraiimj4XorfsLr1ZnURhy5BVBDWrqubXA5t5EKJfvuyT21otoEvuBS=
+NZYcMctBbZzmt42yVePH1ySSx3MR8TLHtC_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4=
+urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHL=
+udWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjK=
+Cpa1CeKnHIBl2IQQLAI4j2GyRSe1BbJ-2BHIaPJt1Af94UnzcjI4GzojrEWWfmccgz6jux7eyhx=
+2Nbs2u9c0-2F3OL5fJRghVwngp6Unu0-2Fr6FzrQymiaWFSjBUGckK-2BgUDsGZPevJp93BBfiE=
+lk1-2FyH85jaiW4olwejQahwP5Sw20XQWBvlo-3D )
+
+=20
+
+*   =E6=82=A8=E7=8F=BE=E5=9C=A8=E5=8F=AF=E4=BB=A5=E5=9C=A8=E8=88=AA=E7=8F=
+=AD=E8=B5=B7=E9=A3=9B=E5=89=8D=E9=80=9A=E9=81=8E =E7=AE=A1=E7=90=86=E6=88=
+=91=E7=9A=84=E8=A8=82=E4=BD=8D ( http://links.yourbooking.hkexpress.com/ls/=
+click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY0LqLGRg12n7PtbGuQMOPaJzxOW9QAP8Zm-2Fw=
+pm30m6k5DB0j_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJv=
+MgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwggl=
+PChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2=
+GyRSe1BFGcJMMJbIotu17nMcBSNOJjBDCKCrWrbrftWEt0svQ-2FzUlrFyqBLIdYTzM3M8-2F05=
+7YZVuEGxWYeFz7ThvCZZSiTkYPh1D2GTXZh8je7Z-2BI-2B9y0XFN9K2-2FewTLqL7dfG3t8ILy=
+OOsZsLNfo0oJb-2FU-3D ) =E4=BB=A5=E5=84=AA=E6=83=A0=E5=83=B9=E6=A0=BC=E6=B7=
+=BB=E5=8A=A0=E8=88=AA=E7=8F=AD=E9=99=84=E5=8A=A0=E6=9C=8D=E5=8B=99=EF=BC=88=
+=E5=A6=82=E6=89=98=E9=81=8B=E8=A1=8C=E6=9D=8E=E9=A1=8D=E3=80=81=E9=A4=90=E9=
+=A3=B2=E6=88=96=E6=8C=91=E9=81=B8=E5=BA=A7=E4=BD=8D=E7=AD=89=EF=BC=89=E3=80=
+=82
+
+=E5=A6=82=E6=9E=9C=E6=82=A8=E9=9C=80=E8=A6=81=E6=9B=B4=E6=94=B9=E6=97=A5=E6=
+=9C=9F / =E6=99=82=E9=96=93=EF=BC=8C=E6=82=A8=E4=BA=A6=E5=8F=AF=E4=BB=A5=E9=
+=80=9A=E9=81=8E =E7=AE=A1=E7=90=86=E6=88=91=E7=9A=84=E8=A8=82=E4=BD=8D ( ht=
+tp://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTT=
+WIY0LqLGRg12n7PtbGuQMOPaJzxOW9QAP8Zm-2Fwpm30m6k5VQfj_Tj27qEYzp-2F2o8TAQfd7e=
+eZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZ=
+IjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKA=
+ImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSey-2BSAHn-2F3DTePcCxiUDdeaECpWV=
+RC0VfLjbj-2BT1cPtC-2Fpi95Ryy-2F9yEnEvobome6-2Fh7XI0DE3iiRhl2FmV518Cq0PxF88m=
+-2Bypl3176v4Yx8EbsZ2ELdgUYoOt1MrYHvnGaqnKfBOH6fCwNt-2B-2BwO4PCg-3D ) =E9=80=
+=B2=E8=A1=8C=E6=9B=B4=E6=94=B9=E3=80=82=E8=AB=8B=E6=B3=A8=E6=84=8F=EF=BC=8C=
+=E6=82=A8=E9=9C=80=E8=A6=81=E7=82=BA=E6=AF=8F=E6=9B=B4=E6=94=B9=E4=B8=80=E6=
+=AC=A1=E8=88=AA=E6=AE=B5=E6=94=AF=E4=BB=98=E6=B8=AF=E5=B9=A3580=E5=85=83=E7=
+=9A=84=E8=B2=BB=E7=94=A8=EF=BC=8C=E5=8F=8A=E6=88=96=E9=9C=80=E6=94=AF=E4=BB=
+=98=E7=9B=B8=E9=97=9C=E7=A5=A8=E5=83=B9=E5=B7=AE=E9=A1=8D=EF=BC=88=E5=8C=85=
+=E6=8B=AC=E7=A8=85=E8=B2=BB=E5=92=8C=E9=99=84=E5=8A=A0=E8=B2=BB=EF=BC=89=E3=
+=80=82 =E5=A6=82=E6=9E=9C=E6=9C=89=E4=BB=BB=E4=BD=95=E7=96=91=E5=95=8F=EF=
+=BC=8C=E8=AB=8B=E6=8C=89    =E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A=E3=80=82*
+
+=E7=94=B12023=E5=B9=B49=E6=9C=881=E6=97=A5=E8=B5=B7=EF=BC=8C=E6=A9=9F=E4=B8=
+=8A=E5=8F=AF=E6=8E=A5=E5=8F=97=E7=9A=84=E4=BB=98=E6=AC=BE=E6=96=B9=E5=BC=8F=
+=E7=82=BA=E5=85=AB=E9=81=94=E9=80=9A=EF=BC=88=E4=B8=8D=E9=81=A9=E7=94=A8=E6=
+=96=BC=E5=85=8D=E7=A8=85=E5=93=81=E5=8F=8AHK Express=E5=93=81=E7=89=8C=E5=
+=95=86=E5=93=81=EF=BC=89=E3=80=81VISA=E5=8F=8AMastercard=E3=80=82
+
+
+
+=E8=88=AA=E7=8F=AD
+
+=20
+
+   =20
+
+
+
+
+
+
+
+
+
+
+=E8=A8=82=E5=96=AE
+
+         =20
+
+* Wing Yiu Cheung* =20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+** =E8=88=AA=E7=8F=AD -  =E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E -  =E7=A5=A8=
+=E5=83=B9=E7=B4=9A=E5=88=A5 -  =E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E -  =E4=
+=BF=9D=E9=9A=AA -  =E5=BA=A7=E4=BD=8D -  =E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=
+=8E -  =E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 -  U-First =
+=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 -  =E6=97=85=E9=81=8A=E6=95=B8=E6=93=
+=9A=E5=8D=A1 -  =E7=A2=B3=E6=8A=B5=E9=8A=B7 -=20
+
+=20
+
+=E7=A5=A8=E5=83=B9=E5=8F=8A=E6=94=B6=E8=B2=BB =E7=B8=BD=E8=A8=88: HKD 2616.=
+00
+
+
+
+*=E6=94=B6=E8=B2=BB=E8=A9=B3=E6=83=85*
+ =E7=A5=A8=E5=83=B9  - HKD 1040.00
+=E7=87=83=E6=B2=B9=E9=99=84=E5=8A=A0=E8=B2=BB - HKD 640.00
+=E5=85=B6=E4=BB=96=E8=B2=BB=E7=94=A8=E5=8F=8A=E7=A8=85=E9=A0=85 - HKD 736.0=
+0
+=E4=B8=8D=E8=A8=AD=E9=80=80=E9=82=84=E7=9A=84=E7=A5=A8=E5=83=B9=E5=B7=AE=E9=
+=A1=8D - NA
+=E7=9F=AD=E4=BF=A1=E7=99=BC=E9=80=81=E8=A1=8C=E7=A8=8B=E5=96=AE - NA
+=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E - NA
+=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90 - NA
+=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E - NA
+=E5=BA=A7=E4=BD=8D - HKD 200.00
+
+=E4=BF=9D=E9=9A=AA - NA
+=E7=A5=A8=E5=8B=99=E8=A1=8C=E6=94=BF=E8=B2=BB - HKD 0.00
+=E6=9B=B4=E6=94=B9=E8=B2=BB - NA
+U-First =E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99 - NA
+=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1 - NA
+ =E7=A2=B3=E6=8A=B5=E9=8A=B7 - NA
+
+=E4=BB=98=E6=AC=BE=E6=96=B9=E6=B3=95 - =20
+=E6=97=A5=E6=9C=9F -=20
+=E7=8B=80=E6=85=8B -  =E5=AE=9A=E5=83=B9=E8=B2=A8=E5=B9=A3 -=20
+=E4=BA=A4=E6=98=93=E8=B2=A8=E5=B9=A3 -=20
+
+^=E7=A6=AE=E5=88=B8=E9=87=91=E9=A1=8D=EF=BC=9A=E5=8F=AA=E4=BD=9C=E7=B3=BB=
+=E7=B5=B1=E8=A8=AD=E5=AE=9A=E7=94=A8=E9=80=94=EF=BC=8C=E6=9C=89=E9=97=9C=E6=
+=AC=BE=E9=A0=85=E4=B8=A6=E4=B8=8D=E6=9C=83=E8=A2=AB=E6=94=B6=E5=8F=96=E3=80=
+=82
+
+*=E8=AB=8B=E4=BB=94=E7=B4=B0=E9=96=B1=E8=AE=80=E6=9C=AC=E6=A2=9D=E6=AC=BE=
+=E5=8F=8A=E7=B4=B0=E5=89=87=EF=BC=8C=E8=AB=8B=E9=BB=9E=E6=93=8A=E6=AD=A4=E9=
+=8F=88=E6=8E=A5* ( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du0=
+01.XSTVY9SsMUFvRR9BTTWIY7NyUoasKAyzU9tsZLsOt59OJp0THjUMIPHH7mFH3Cb3-2FPld4W=
+0t-2Fmic57q2jfwKS5cOG-2Bbekog11LAeswomahteFuj67dYTMYq7QaQnaJvvn6OqSZZIvuDzi=
+jOJuq3Dyh-2BLUeYJROExm4OgwW3DrNk-3DgkBT_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm=
+6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs7=
+9cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybY=
+XKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe2edQudwuz-2BkpiCJfIj4LjQuQAUHgMM6vBNKrXS2hn=
+EqzW4bPAOWRtMaD0g7n4kQwJ4u35Uv1pMu1A0fnVSJIdCd-2B6EnhwCw9Eu04ltlW7WaQpuLaS0=
+e2RC1iK7itdigV-2FnkbNaQ-2BqU4yChb-2Fm9gVQ8-3D ) =E3=80=82=E5=AE=8C=E6=88=90=
+=E9=A0=90=E8=A8=82=E9=81=8E=E7=A8=8B=E5=BE=8C=E6=82=A8=E8=88=87=E9=A6=99=E6=
+=B8=AF=E5=BF=AB=E9=81=8B=E4=B9=8B=E9=96=93=E5=B7=B2=E6=A7=8B=E6=88=90=E5=90=
+=88=E5=90=8C=E9=97=9C=E4=BF=82=EF=BC=8C=E6=82=A8=E7=A2=BA=E8=AA=8D=E6=82=A8=
+=E5=B7=B2=E7=B6=93=E9=96=B1=E8=AE=80=E4=B8=A6=E7=90=86=E8=A7=A3=E6=9C=AC=E6=
+=A2=9D=E6=AC=BE=E5=92=8C=E6=A2=9D=E4=BB=B6=E3=80=82
+
+=20
+
+=E9=87=8D=E8=A6=81=E8=B3=87=E8=A8=8A
+
+=E2=80=8B=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=8E=E9=99=90=E9=A1=8D=E2=80=8B
+
+=E6=AF=8F=E4=BD=8D=E6=97=85=E5=AE=A2=E5=8F=AA=E5=8F=AF=E6=94=9C=E5=B8=B6=E8=
+=A9=B3=E5=88=97=E6=96=BC=E4=B8=8B=E6=96=B9=E7=9A=84=E6=89=8B=E6=8F=90=E8=A1=
+=8C=E6=9D=8E=E7=99=BB=E6=A9=9F=EF=BC=8C=E5=85=B6=E7=B8=BD=E9=87=8D=E9=87=8F=
+=E4=BA=A6=E4=B8=8D=E5=8F=AF=E4=BB=A5=E8=B6=85=E5=87=BA7=E5=85=AC=E6=96=A4=
+=E6=88=9615.4=E7=A3=85=E3=80=82=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81=E5=B0=
+=BA=E5=AF=B8=E4=B8=8D=E5=8F=AF=E5=A4=A7=E6=96=BC *40 (=E9=95=B7) x 25 (=E5=
+=AF=AC) x 20 (=E9=AB=98)* =E5=8E=98=E7=B1=B3 =EF=BC=8C =E4=B8=A6=E5=BF=85=
+=E9=A0=88=E6=94=BE=E6=96=BC=E5=89=8D=E6=96=B9=E5=BA=A7=E4=BD=8D=E4=B8=8B=E6=
+=96=B9=E3=80=82=E8=80=8C=E7=99=BB=E6=A9=9F=E8=A1=8C=E6=9D=8E=E5=B0=BA=E5=AF=
+=B8=E5=89=87=E4=B8=8D=E5=8F=AF=E5=A4=A7=E6=96=BC *56 (=E9=95=B7) x 36 (=E5=
+=AF=AC) x 23 (=E9=AB=98)* =E5=8E=98=E7=B1=B3 =EF=BC=88=E8=BC=AA=E5=AD=90=E3=
+=80=81=E6=8A=8A=E6=89=8B=E5=92=8C=E5=81=B4=E8=A2=8B=E7=AD=89=E5=90=8C=E6=A8=
+=A3=E8=A8=88=E7=AE=97=E5=9C=A8=E5=85=A7=EF=BC=89=E3=80=82=E6=A9=9F=E5=A0=B4=
+=E7=A6=81=E5=8D=80=E5=85=A7=E8=B3=BC=E8=B2=B7=E7=9A=84=E5=95=86=E5=93=81=E4=
+=BA=A6=E6=9C=83=E8=A2=AB=E8=A6=96=E4=BD=9C=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=
+=8E=E3=80=82=E8=B6=85=E5=87=BA=E9=99=90=E5=88=B6=E7=9A=84=E7=89=A9=E5=93=81=
+=E5=B0=87=E9=9C=80=E5=AF=84=E8=89=99=E4=B8=A6=E6=9C=83=E6=94=B6=E5=8F=96 =
+=E9=A1=8D=E5=A4=96=E8=B2=BB=E7=94=A8 ( http://links.yourbooking.hkexpress.c=
+om/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo9vTGowrfzJ=
+Y70b3K0SFbNEPf5WtpH2BVS7cb9O6nXtvRbpJY4gLRGACkocBAGgIA8-3Dzyyp_Tj27qEYzp-2F=
+2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxj=
+hZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxy=
+HsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe5oXAl8Np9M0OFeCnnlX6=
+89lEarIEl13-2FTAwfDhGj0wIATN1SGFfm2JjlYtYHaWveK7LMAHGp6GjVG0W-2B5udEoMJIPIi=
+WQNVieKCPVBbyFTELL2Gxmh5BlUyPGsU43LL8cZtTskl8YIms39S6RYAA-2BM-3D ) =E3=80=
+=82
+
+=E8=BC=95=E4=BE=BF=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81
+=E7=B6=93=E6=BF=9F=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81=
+ =E5=8F=8A 1=E4=BB=B6=E7=99=BB=E6=A9=9F=E8=A1=8C=E6=9D=8E
+=E9=9A=A8=E5=BF=83=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81
+=E7=84=A1=E6=86=82=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81=
+ =E5=8F=8A 1=E4=BB=B6=E7=99=BB=E6=A9=9F=E8=A1=8C=E6=9D=8E
+
+=E6=96=BC2024=E5=B9=B45=E6=9C=888=E6=97=A5=E4=B9=8B=E5=89=8D=E9=A0=90=E8=A8=
+=82=E6=A9=9F=E7=A5=A8=E7=9A=84=E6=97=85=E5=AE=A2=EF=BC=8C=E8=AB=8B=E5=8F=83=
+=E8=80=83=E5=88=9D=E6=AC=A1=E9=A0=90=E8=A8=82=E6=99=82=E7=9A=84=E8=A1=8C=E7=
+=A8=8B=E7=A2=BA=E8=AA=8D=E9=9B=BB=E9=83=B5=E6=89=80=E5=88=97=E6=98=8E=E7=9A=
+=84=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=8E=E9=99=90=E9=A1=8D=E6=88=96=E8=88=87=
+=E5=AE=A2=E6=88=B6=E8=81=AF=E7=B9=AB=E5=9C=98=E9=9A=8A=E6=9F=A5=E8=A9=A2=E3=
+=80=82
+
+=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A =E2=80=BA ( http://links.yourbooking.h=
+kexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo=
+9vTGowrfzJY70b3K0SFbNE5C4fEZAIUdDonCmHTF7dfNUFM8Ci7J5sgvLbhy6m0zE-3Dkpcz_Tj=
+27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lr=
+fOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqI=
+om0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe8doPU-2Bfg=
+sMutPS0X-2F7J-2BZ06CKioG4wdz4Hht0sN0k543-2F4JNadXt7MKmtukpZvbgQm-2FS-2BPkz-=
+2FjEakYYt76-2FU-2Bju2tJesiUIy-2Bt4jNwgUmvlJP66akimEqonaD4kVAO2sVpQchlboirKf=
+JeFz-2BOz-2FkM-3D )
+
+=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=E6=89=8B=E7=BA=8C
+
+=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=E6=9C=8D=E5=8B=99=E5=
+=8F=AA=E9=81=A9=E7=94=A8=E6=96=BC=E6=8C=87=E5=AE=9A=E8=88=AA=E7=B7=9A=EF=BC=
+=8C=E8=80=8C=E6=96=BC=E9=83=A8=E5=88=86=E6=A9=9F=E5=A0=B4=E4=BB=8D=E9=9C=80=
+=E8=A6=81=E6=97=85=E5=AE=A2=E5=9C=A8=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=
+=99=BB=E6=A9=9F=E6=89=8B=E7=BA=8C=E5=BE=8C=E5=89=8D=E5=BE=80=E6=A9=9F=E5=A0=
+=B4=E7=99=BB=E6=A9=9F=E6=AB=83=E6=AA=AF=E4=BB=A5=E6=AA=A2=E6=9F=A5=E6=97=85=
+=E9=81=8A=E8=AD=89=E4=BB=B6=E5=8F=8A=E9=A0=98=E5=8F=96=E7=99=BB=E6=A9=9F=E8=
+=AD=89=E3=80=82=E5=A6=82=E5=90=8C=E8=A1=8C=E8=80=85=E6=9C=89=E5=AC=B0=E5=85=
+=92=E6=88=96=E4=BB=BB=E4=BD=95=E9=9C=80=E8=A6=81=E7=89=B9=E5=88=A5=E5=8D=94=
+=E5=8A=A9=E7=9A=84=E6=97=85=E5=AE=A2=EF=BC=8C=E5=B0=87=E4=B8=8D=E9=81=A9=E7=
+=94=A8=E6=96=BC=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=E6=9C=
+=8D=E5=8B=99=E3=80=82
+
+=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A =E2=80=BA ( http://links.yourbooking.h=
+kexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo=
+-2Fg4LccUMX9fGLQ-2FsfO93yf2uHlwxtYlMIKN0-2F20q4IhKh4CbUXTR3orHcTkM2damk-3D0=
+rKT_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsW=
+p5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOK=
+CwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe7uIK=
+EzchAHMUcckhG8-2BtgcK7KEqoY287aYvcZG3yAL-2FbhMmrr57Dbw-2BKu4udYG6P5I6v1VD7f=
+jK0P-2FB9ngNluj0sESTI1mG1w0DparZNwdEZzaeISPiRjMOnb79xFTZ75ogApPILjWMYMRXBzJ=
+x6Yg-3D )
+
+=E6=A9=9F=E5=A0=B4=E6=AB=83=E6=AA=AF=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F
+
+=E9=A6=99=E6=B8=AF=E5=9C=8B=E9=9A=9B=E6=A9=9F=E5=A0=B4=E7=99=BB=E6=A9=9F=E6=
+=89=8B=E7=BA=8C=E6=AB=83=E6=AA=AF=E6=9C=83=E6=96=BC=E8=88=AA=E7=8F=AD=E9=A0=
+=90=E5=AE=9A=E9=9B=A2=E5=A2=83=E6=99=82=E9=96=933=E5=B0=8F=E6=99=82=E5=89=
+=8D=E9=96=8B=E5=A7=8B=E6=9C=8D=E5=8B=99=EF=BC=8C=E4=B8=A6=E6=96=BC=E8=88=AA=
+=E7=8F=AD=E8=B5=B7=E9=A3=9B=E5=89=8D *1=E5=B0=8F=E6=99=82* =E5=81=9C=E6=AD=
+=A2=E6=9C=8D=E5=8B=99=E3=80=82=E6=8C=89=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A=
+=E6=9F=A5=E9=96=B1=E5=85=B6=E4=BB=96=E6=A9=9F=E5=A0=B4=E7=9A=84=E7=99=BB=E6=
+=A9=9F=E6=AB=83=E6=AA=AF=E6=9C=8D=E5=8B=99=E6=99=82=E9=96=93=E3=80=82
+
+=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A =E2=80=BA ( http://links.yourbooking.h=
+kexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo=
+-2Fg4LccUMX9fGLQ-2FsfO93yfCZiMFD-2F8Hy5fEpxMk0HXJdpITz9Sg4g-2FFSgqpvN5OJw-2=
+Fwh7VdRWyetvQP67koV6HpHP1zttNGGP46xcRzL9XvaXbvZR26DeB4QCycbRyen4T78nCfxpQoF=
+TsHRHeC1b69rTVxIN7ggrhA-2Fost4PgoCaGNspx6dnDTZ39m-2FhVlwPxAAQkFtiCNBE-2FyEw=
+fEiQq1XSA_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQ=
+POEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPCh=
+rkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyR=
+SeyikePhFxX1-2FphoJhpsI1O-2FlWj6n9qu8DkUUQw-2BQQV87wykNlDePeYnyEdT0QFe-2BIu=
+EALeQSiruQajD5VRJ2I7qE52VJzR51paCPz5PDsBrTA7zpEVvCB9FgMh-2BLsZ3W-2BfzdfJMPU=
+RErKCdRp7wMRSY-3D )
+
+=E7=99=BB=E6=A9=9F
+
+=E7=99=BB=E6=A9=9F=E9=96=98=E5=8F=A3=E5=B0=87=E6=BA=96=E6=99=82=E6=96=BC=E8=
+=B5=B7=E9=A3=9B=E5=89=8D *20* =E5=88=86=E9=90=98=E9=97=9C=E9=96=89=EF=BC=8C=
+=E8=AB=8B=E6=97=85=E5=AE=A2=E6=96=BC=E8=88=AA=E7=8F=AD=E8=B5=B7=E9=A3=9B=E5=
+=89=8D=E8=87=B3=E5=B0=91 *40* =E5=88=86=E9=90=98=E5=88=B0=E9=81=94=E9=96=98=
+=E5=8F=A3=EF=BC=8C=E4=BB=A5=E5=85=8D=E9=8C=AF=E9=81=8E=E8=88=AA=E7=8F=AD=E3=
+=80=82
+
+=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A =E2=80=BA ( http://links.yourbooking.h=
+kexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo=
+8jmWIMa63PSJnkjTuTl0ou69uy_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYb=
+LoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWP=
+s2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKn=
+HIBl2IQQLAI4j2GyRSe8-2FK2y-2F5bY9SLbMLr-2BuLkqHX3gn1YJcPqjRDMnfYdQin6b3Zf14=
+mk7vr59zjejFFAztztpnXMGUkIxibwT2LdY3Uf4p5AjCkBXLXP29p0-2BkmeiPJvHu5-2BRbdgF=
+uzqPVyVV-2F2-2FJjsDv0K1-2FZZvzGRt8g-3D )
+
+*=E5=BE=80=E8=BF=94=E5=A4=A7=E7=81=A3=E5=8D=80=E6=8E=A5=E9=A7=81=E6=9C=8D=
+=E5=8B=99=E8=B3=87=E8=A8=8A*
+=E6=97=85=E5=AE=A2=E6=8A=B5=E9=81=94=E9=A6=99=E6=B8=AF=E5=9C=8B=E9=9A=9B=E6=
+=A9=9F=E5=A0=B4=E5=BE=8C=E9=9C=80=E5=85=88=E5=89=8D=E5=BE=80E2=E8=BD=89=E6=
+=A9=9F=E5=8D=80=EF=BC=8C=E4=B8=A6=E5=87=BA=E7=A4=BA=E6=AD=A4=E7=A2=BA=E8=AA=
+=8D=E9=9B=BB=E9=83=B5=E3=80=81=E7=99=BB=E6=A9=9F=E8=AD=89=E5=8F=8A=E6=97=85=
+=E9=81=8A=E8=AD=89=E4=BB=B6=E4=BB=A5=E9=A0=98=E5=8F=96=E8=88=B9=E7=A5=A8=E6=
+=88=96=E8=BB=8A=E7=A5=A8=EF=BC=8C=E5=86=8D=E5=88=B0=E6=B5=B7=E5=A4=A9=E4=B8=
+=AD=E8=BD=89=E5=A4=A7=E6=A8=93=E4=BD=BF=E7=94=A8=E5=BF=AB=E8=88=B9=E6=88=96=
+=E6=B5=B7=E5=A4=A9=E4=B8=AD=E8=BD=89=E5=A4=A7=E6=A8=93=E5=AE=A2=E8=BB=8A=E6=
+=8E=A5=E9=A7=81=E6=9C=8D=E5=8B=99=E3=80=82
+
+=E6=88=91=E5=80=91=E6=98=AF=E4=BB=A5=E7=8F=A0=E6=B1=9F=E5=AE=A2=E9=81=8B=E6=
+=9C=89=E9=99=90=E5=85=AC=E5=8F=B8=EF=BC=88=E3=80=8C=E7=8F=A0=E6=B1=9F=E5=AE=
+=A2=E9=81=8B=E3=80=8D=EF=BC=89=E4=B9=8B=E4=BB=A3=E7=90=86=E4=BA=BA=E8=BA=AB=
+=E5=88=86=E9=8A=B7=E5=94=AE=E5=8F=8A=E6=8E=A8=E5=BB=A3=E5=BF=AB=E8=88=B9/=
+=E6=B5=B7=E5=A4=A9=E4=B8=AD=E8=BD=89=E5=A4=A7=E6=A8=93=E5=AE=A2=E8=BB=8A=E6=
+=8E=A5=E9=A7=81=E6=9C=8D=E5=8B=99=E8=88=B9=E7=A5=A8/=E8=BB=8A=E7=A5=A8=E3=
+=80=82
+
+=E7=95=B6=E4=BD=A0=E4=B9=98=E6=90=AD=E7=94=B1=E7=8F=A0=E6=B1=9F=E5=AE=A2=E9=
+=81=8B=E6=89=BF=E9=81=8B=E7=9A=84=E5=BF=AB=E8=88=B9=E6=88=96=E6=B5=B7=E5=A4=
+=A9=E4=B8=AD=E8=BD=89=E5=A4=A7=E6=A8=93=E5=AE=A2=E8=BB=8A=E6=8E=A5=E9=A7=81=
+=E6=9C=8D=E5=8B=99=EF=BC=8C=E4=BD=A0=E7=9A=84=E5=BF=AB=E8=88=B9=E6=88=96=E6=
+=B5=B7=E5=A4=A9=E4=B8=AD=E8=BD=89=E5=A4=A7=E6=A8=93=E5=AE=A2=E8=BB=8A=E6=8E=
+=A5=E9=A7=81=E6=9C=8D=E5=8B=99=E5=90=88=E7=B4=84=E8=88=87=E7=8F=A0=E6=B1=9F=
+=E5=AE=A2=E9=81=8B=E7=B0=BD=E8=A8=82=E4=B8=A6=E5=8F=97 =E7=8F=A0=E6=B1=9F=
+=E5=AE=A2=E9=81=8B=E7=9A=84=E6=A2=9D=E6=AC=BE=E5=8F=8A=E7=B4=B0=E5=89=87 ( =
+ ) =E6=89=80=E7=B4=84=E6=9D=9F=EF=BC=8C=E4=B8=A6=E6=A0=B9=E6=93=9A=E4=BD=A0=
+=E9=A0=90=E8=A8=82=E7=9A=84=E6=99=82=E9=96=93=E8=80=8C=E5=AE=9A=E3=80=82
+
+=E8=AB=8B=E7=80=8F=E8=A6=BD =E6=AD=A4=E8=99=95 (  ) =E4=BB=A5=E4=BA=86=E8=
+=A7=A3=E6=9B=B4=E5=A4=9A=E6=9C=89=E9=97=9C=E6=8E=A5=E9=A7=81=E6=9C=8D=E5=8B=
+=99=E8=B3=87=E8=A8=8A=E3=80=82
+
+
+( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR=
+9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2Fg4LccUMX9fGLQ-2FsfO93yfyZbQEcUSRgXOOkaAzBEI-=
+2BpYqIHJFoIeFyMkpIYhmRpG3whws9U4tMRpdRhFflLj9ie28zbp2089Nds4q6GzirJMf5FRzCr=
+XegpWTOpMYkggBDbs4BMHcsev-2FpVX8XWapmif07jwlzQ9w8yBO9aoGNQ-3D-3DGdvu_Tj27qE=
+Yzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJ=
+MR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j=
+6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe6Zwi7o5sULUfsd=
+RTdqdwz7p4OdjOyaHJIoYNuCCj6g28w271j1ymvS1mgHe3SaW6EgfegWysVKWPrb5oev4kZPe0T=
+nxsI5CVbFQiU5Is8he2DwyQFgDNgJOiIyUOazi-2Fm7irEK9o3Ydjxj-2Fd20lQxo-3D ) ( ht=
+tp://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTT=
+WIY3-2F0O2Cwq4AIosqtzYGfIzDVohWotxYCcWTYFd-2BKAKF09VFv6IAZPtBMMKkuEb8-2BJA-=
+3D-3D44fy_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQ=
+POEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPCh=
+rkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyR=
+Se30CgEj7V9AynPm4d1LptE27tM-2B0bk7uJZIeI5vqW2CDW5DF3AZqHeTkbgexmVlaW52c5oxW=
+f3DPV22XsA1Z7IQl2FD0ZR-2BztKdjYIbd-2FntaIyOvLXnQEQ0rAA04D6ULy5Jz019DHr5ogbd=
+HyFosiI0-3D ) ( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.=
+XSTVY9SsMUFvRR9BTTWIY-2BoZOS7cgamJ0CCcenDl50Sl9eJCjnuELY9AMZEtjpY-2BzO6vYPN=
+WPu0dfosiGJkTGIka5rp-2BmEW-2BoK1J9uPK13g-3DVEwf_Tj27qEYzp-2F2o8TAQfd7eeZ1XR=
+rs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumu=
+Ddy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8=
+b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe0hhtzPAvrwwIcirFuEPw8zui2b-2BG5RGTm=
+sIys2JyA0V0IXe3RDklCz1c9EET-2BjxDE9BFwnBtT4Cyh6uk2xLqFCdT-2FyHb4i-2FGT6YTs2=
+-2FF-2BB8Rdi1wzTjR4bB3enmv9xf6MYoatxL6XhM3Ho8xNf-2F6lw-3D )
+
+The content of this e-mail is considered confidential and is intended solel=
+y for the addressee(s) and access by anyone else is unauthorized. Disclosur=
+e, copying or distribution, in whole or part of this message, or taking any=
+ action based on it, is strictly prohibited. The views expressed in this e-=
+mail are not necessarily the views of the Company, or any associated compan=
+y, except where explicitly stated.
+
+
+
+( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR=
+9BTTWIY3HlOORz83lSgSS4AXheoFjjuco6O-2BQIyKh24pMo-2F-2BeBCAXf2MExiKZoT70LW-2=
+BF-2B68CDgF7VU3-2B3eZB5L7y9E14-3DNPNP_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l=
+1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79c=
+YHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXK=
+yjKCpa1CeKnHIBl2IQQLAI4j2GyRSe42D5Lr1VGPd-2FDevtKgPKOGEtKzDq7rCWLbbN1C2qqhP=
+nN8emW2apqfNHx1ZQkzAiX09jXigYTzoYZj2wX972jz2LwC-2FummDFlWFErjCjCZzFtEDyTPs8=
+z6582y6N-2BEWCEh7Tz4bAvJbcADIUAF11io-3D )
+
+( http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR=
+9BTTWIY-2Fv4M2QFdBUQksIopA7G5ux2Y8GW45GxjD4MthhV-2FI-2FJwySx_Tj27qEYzp-2F2o=
+8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZ=
+CCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHs=
+Ykr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe7FVhitT9qFK8zGqxgzSteP=
+U-2BtzwPQ39YT7g80qz-2BLDZAaTOI2xaKrbpiQ89Mil-2FfqhcJi0tKw4VvGmR0CYexZbPEQQA=
+1WD1OhSq-2B4imbxCv2qvRJoqs5hKzgM6TCCpHodJQ2q-2B61oowvENaWMr6kgw-3D ) ( http=
+://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWI=
+Y6vUdRK4aWgkyhhXH5d19KBPmpRRHwPkaRPIWoS8Ncn2_q-s_Tj27qEYzp-2F2o8TAQfd7eeZ1X=
+Rrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjum=
+uDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx=
+8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe54ZxKw5OPWa-2FnyltFpv2xRmtbAl7-2F8=
+tJ9314JiQzduY4lG5-2FGY6-2B5vCPwg6WRoR8f5IuFEbmCz7gMYKyhsGprc422sFKvASSvtmpQ=
+L-2Be9ExwMSZG2f5XAqDqoUlVAyHk5sN-2FTjqVuwq9lDkCiJRKHA-3D ) ( http://links.y=
+ourbooking.hkexpress.com/ls/click?upn=3Du001.-2BMXDn1-2BQgXLRxWQoAVhS2T0bAv=
+7bKsM2GM2rtBRzroU1IOunJzpH9H51x8C98XG9if-R_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6ei=
+HPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2=
+Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLg=
+ybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe97QTdU91RRFzt2arZA6V5KD87F6hSewlYwN1t-2B=
+Rx3FtL6UZTfmtnvFpU8FbD4AQPfR2MPPjizX-2BeMy9MPyKajbcsVonxsVKffUhAQvMKdqL3e2s=
+F-2BQR-2BEsqqDPa8o3LDWkAo4snMYzIXi00BF2-2Fy2c-3D ) ( http://links.yourbooki=
+ng.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY2k3YZuQa2-2BXOJDb=
+rS8P0eUzCykMi1w1Ffr8n8Wx2adeF1gimUUVjWtClaaEqAcCkg-3D-3D9LKA_Tj27qEYzp-2F2o=
+8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZ=
+CCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHs=
+Ykr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2F55HWYlyF23JBmKNMazA=
+ylg8TlbK0UpaswxctCbyrfSZXiWI-2FoBQBmB67B7xAx1wlrAIerQLjEPjYhh1Ys-2BiaOrXkVj=
+S-2FqBhZBGvGSxISJxxQLt7HBV-2BV2tS0G-2FbAxASqIesLluBfV3aWP-2FxoLDjr8-3D ) ( =
+http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9B=
+TTWIYyPqd23JQLrOcRVClfxVUvu96oDQSpmdpE2pBqS5NQhQMXrjWHcbjMMo5-2FjdyX4Q4TPeC=
+0v1m8XOtE-2Bk5JLuO80-3DTIad_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjY=
+bLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDW=
+Ps2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeK=
+nHIBl2IQQLAI4j2GyRSe26x2cAh2cPS1uVG5wwjL8UZrtpZQaKVQiZ5-2BK-2FWQwJdvqIoKbRd=
+rweDoYCDrb1US0JR-2BEtbwDaKi81j5RTUnOT6TAKoho7QXn-2FgO-2FRV7hPafnarkq18p2AT6=
+5rO-2FdPV64lVegbyld8MUAAjyd-2Bkf3o-3D ) ( http://links.yourbooking.hkexpres=
+s.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIYyIpVPB-2F0ZoTt3WQexX78Ng-2Bw=
+QHqczlwcYdu4P19y0aYX5jqLIsatkajHuyrQ9n5PkeHbrfJFPTQpqzLwHFMGdI-3DAChF_Tj27q=
+EYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOU=
+JMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0=
+j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2B78lgHxQn57=
+fWd6e3UpGHjqelqPS5EAwmqBEYBCjA8O65BSMDA6Vi9thRgZpKjDm8fCz-2Fp8vAQV-2BPtXhlB=
+J6lIPpwhjZGFx7qdGpJGLwzo5k7oN7vxzxoT1STmj5IKyCV35KOPjSc5sCZmbYaTrnx0-3D )
+
+=E8=81=AF=E7=B5=A1=E6=88=91=E5=80=91 ( http://links.yourbooking.hkexpress.c=
+om/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2FzB4r-2F=
+17FumEs-2BDEga4eLgohI-2BieFUaTPaOgZm2xNL2eYr0LzVnRCOTVQOx0YPDdw-3DatBV_Tj27=
+qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfO=
+UJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom=
+0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2BdD3C1VlIk=
+WOkFG-2BFtgzQ823j9Rqs7S7eckGJnDd8FlNI2k7bUp-2FjwzG1wxw8ePR49OK8FeHAiY0qNLnQ=
+gguz4LTH28-2B-2BDV-2F92z0hRb36grWAuhxNduhgQOB-2F3o89Ze4DPQbite-2BA-2FXD0Fxu=
+VqMHQw-3D ) =E2=80=A2 =E7=A7=81=E9=9A=B1=E6=94=BF=E7=AD=96 ( http://links.y=
+ourbooking.hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh=
+7Gqf1xwuqTxo8gEEE-2Frzc-2FRgtV9aO5YjcCKp99Sj8QP5CCLT-2FlN0kqQ0MFF9x09-2BMU2=
+E5D0jQO6yI-3D97wP_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfO=
+dUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOp=
+DwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQL=
+AI4j2GyRSe-2F6b0hyB5ygqatNQio5eUEy7Bk17H4HAxik2Nv7EE9TurpkIxWZQkqYqAia6Qth-=
+2F-2Fp7K5HZW68TJD-2B0JPrkwUVN5osZ6AMMTfYKf92XIDGIkZsGwVEGhviL-2Fx0b8QUSSLBy=
+58RNEwCPiGJ-2B3Muts3sM-3D )
+
+=C2=A9 2025 Hong Kong Express Airways Limited
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+--7d44ae2edb901b7d8a6c6bf16cf9a05108713ad8c58d0b19cce75fd87189
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
+
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"en" xml:lang=3D"en">
+
+<head>
+  <link rel=3D"stylesheet" type=3D"text/css" href=3D"../css/app.css">
+  <!-- <link rel=3D"stylesheet" type=3D"text/css" href=3D"../css/theme-hke.=
+css" /> -->
+  <!--[if !mso]><!-->
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+  <!--<![endif]-->
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1=
+">
+  <meta name=3D"format-detection" content=3D"telephone=3Dno">
+  <link href=3D"https://fonts.googleapis.com/css?family=3DRoboto+Condensed:=
+400,700" rel=3D"stylesheet">
+  <!-- @start: PROJECT CSS -->
+  <link href=3D"https://fonts.googleapis.com/css?family=3DLato&display=3Dsw=
+ap:300,400,500,600,700&amp;subset=3Dlatin-ext"
+    rel=3D"stylesheet">
+  <title>Itinerary</title>
+  <style>
+    @media only screen {
+      html {
+        min-height: 100%;
+        background: #fff
+      }
+
+      body {
+        width: 100% !important;
+        min-width: 100%;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        margin: 0;
+        padding: 0;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+        display: block
+      }
+
+      td {
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+        border-collapse: collapse !important
+      }
+
+      table,
+      td {
+        padding: 0;
+        vertical-align: top;
+        text-align: left
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 100%
+      }
+    }
+
+    @media only screen and (max-width:610px) {
+      center {
+        min-width: 0 !important
+      }
+
+      table.container {
+        width: 98% !important
+      }
+    }
+
+    .fare-class-Fun {
+      color: #fff;
+      padding: 1px;
+      font-family: Arial;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      background-color: #A533C5;
+      display: inline-block
+    }
+
+    .fare-class-FunP {
+      color: #fff;
+      padding: 1px;
+      font-family: Arial;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      background-color: #6E2D91;
+      display: inline-block
+    }
+
+    .fare-class-Ubiz {
+      color: #fff;
+      padding: 1px;
+      font-family: Arial;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      background-color: #50bef0;
+      display: inline-block
+    }
+
+    .fare-class-FunFlex {
+      color: #fff;
+      padding: 1px;
+      font-family: Arial;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      background-color: #0072ce;
+      display: inline-block
+    }
+
+    .fare-class-WorldClassFare {
+      color: #fff;
+      padding: 1px 10px;
+      font-family: Arial;
+      border-radius: 10px;
+      background-color: #A533C5;
+      display: inline-block;
+    }
+
+    .fare-class-Rediscover {
+      color: #fff;
+      padding-bottom: 2px;
+      padding-top: 2px;
+      padding-left: 18px;
+      padding-right: 18px;
+      font-family: Arial;
+      border-radius: 5px;
+      text-align: center;
+      background-color: #A533C5;
+      display: inline;
+    }
+
+    .fare-class-Voucher {
+      color: #fff;
+      padding: 1px;
+      font-family: Arial;
+      border-radius: 10px;
+      width: 70px;
+      text-align: center;
+      background-color: #A533C5;
+      display: inline-block;
+    }
+  </style>
+
+</head>
+
+<body
+  style=3D"Margin:0;color:#564f70;font-family:'Noto Sans',sans-serif,Arial,=
+Noto;font-size:16px;font-weight:400;mso-line-height-rule: exactly;line-heig=
+ht:1.1;margin:0;padding:0;text-align:left">
+<span class=3D"preheader"
+	style=3D"color:#fff;display:none!important;font-size:1px;line-height:1px;m=
+ax-height:0;max-width:0;mso-hide:all!important;opacity:0;overflow:hidden;vi=
+sibility:hidden"></span>
+<table class=3D"body"
+	style=3D"Margin:10px 0;background:#e6e6e6;font-family:'Noto Sans',sans-ser=
+if,Arial,Noto;height:100%;margin:10px 0;width:100%">
+	<tr>
+		<td class=3D"center" align=3D"center" valign=3D"top">
+			<center data-parsed style=3D"min-width:600px;width:100%">
+
+				<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"642" a=
+lign=3D"center" class=3D"container float-center"
+					style=3D"Margin:0 auto;background:#fff;float:none;font-family:'Noto Sa=
+ns',sans-serif,Arial,Noto;margin:0 auto;text-align:center;width:642px">
+					<tr>
+						<td class=3D"content"
+							style=3D"Margin:0;color:#564f70;font-family:'Noto Sans',sans-serif,A=
+rial,Noto;font-size:16px;font-weight:400;line-height:1.1;margin:0;padding:0=
+;text-align:left">
+							<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%"
+								style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+								<tr>
+									<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3Du=
+001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2FMRB00uqKj1p69nKu7-2FsDFT0e=
+wvyte-2BHb4zMKgvshKF5T-2BBX2UlC3JynnHMVO4ZIWooEJ6yLYxqZMosCScMk66dH7YUA2b7U=
+MgbKgIlBEmGPvsT-2FeAUoh6KzLFV-2F9Vu-2BrVy82u-2FMz5MVTHsp9mDDfCUjUM_Tj27qEYz=
+p-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR=
+8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6U=
+GtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe6214NMNPhRpyy47Z=
+WCz6soAaegw5zG3FbaR6PDDgdopqDfy03n16XHEAVF4mUUup7ABJNLkBZnrq10-2BTgbGij3rBQ=
+IwMM26bkNH7SXy9zgVOIbvhMSOcz-2B3NIi3roSUCnm7-2Fv1CLUPP9rJx1QM4UZs-3D"
+										target=3D"_blank">
+									    <img src=3D"https://edge.hkexpress.com/media/itineraryemail/It=
+inerary-email-banner_642x321_takamatsu.jpg" alt=3D"HKExpress" width=3D"642"=
+ border=3D"0">
+									</a>
+								</tr>
+							</table>
+
+							<table class=3D"title-bar_wrap" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" width=3D"100%"
+								style=3D"background-color: #702B91;color:#f4f4f7;font-family:'Noto =
+Sans',sans-serif,Arial,Noto">
+								<tr>
+									<td style=3D"width:26px">&nbsp;</td>
+									<td class=3D"title-bar__title"
+										style=3D"font-size:20px;line-height:25px;font-weight:500;height:5=
+7px;text-align:left;vertical-align:middle">
+										=E6=82=A8=E7=9A=84=E8=88=AA=E7=8F=AD=E8=A8=82=E5=96=AE
+									</td>
+								</tr>
+							</table>
+							<!-- BOOKING REFERENCE + SERVICES -->
+							<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" class=3D"my-booking"
+								style=3D"background-color:#fff;color:#151E3B;font-family:'Noto Sans=
+',sans-serif,Arial,Noto;font-size:17px">
+								<tr>
+									<td>
+										<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"=
+100%"
+											style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"text--purple">
+													<p>=E6=82=A8=E5=A5=BD <strong>Wing Yiu</strong>=EF=BC=8C</p>
+													<p>
+														=E5=A4=9A=E8=AC=9D=E6=82=A8=E9=81=B8=E4=B9=98HK
+														Express=E3=80=82=E6=88=91=E5=80=91=E7=A2=BA=E8=AA=8D=E6=82=A8=
+=E5=B0=87=E6=96=BC<strong>2025=E5=B9=B43=E6=9C=8814=E6=97=A5</strong>=E6=98=
+=9F=E6=9C=9F=E6=98=9F=E6=9C=9F=E4=BA=94=E5=89=8D=E5=BE=80<strong>=E9=AB=98=
+=E6=9D=BE</strong>=E3=80=82=E4=BB=A5=E4=B8=8B=E6=98=AF=E6=82=A8=E7=9A=84=E8=
+=A1=8C=E7=A8=8B=E8=B3=87=E6=96=99=E5=8F=8A=E4=BB=98=E6=AC=BE=E8=A9=B3=E6=83=
+=85=E3=80=82
+													</p>
+												</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+
+
+
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" heigth=3D"42" style=3D"height:24px">&nbsp=
+;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" heigth=3D"42" style=3D"height:24px;backgr=
+ound-color: #F3F3F3;">&nbsp;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"booking-reference text--purple"
+													style=3D"font-size: 12px; line-height: 15px; text-align:center=
+; color: #151E3B; background-color: #F3F3F3; vertical-align: middle">
+													=E8=A8=82=E5=96=AE=E7=B7=A8=E8=99=9F / PNR
+													<p class=3D"booking-reference__number"
+														style=3D"Margin: 7px 0 7px 0; color: #151E3B; font-size: 24px=
+; line-height: 30px; font-weight: 600;">
+														O99BNW</p>
+												</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"my-booking__images__btn"
+													style=3D"text-align:center;vertical-align:middle;background-co=
+lor: #F3F3F3;">
+													<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY0LqLGRg12n7PtbGuQMOPaLRXyuxglAf8CuxGNcBEmyex-2=
+FopmTr2wiWfJTPe6lQaLO4celCzcpyiCilVCaKX7Vlpraiimj4XorfsLr1ZnURhy5BVBDWrqubX=
+A5t5EKJfvuyT21otoEvuBSNZYcMctBbZzmt42yVePH1ySSx3MR8TfI7E_Tj27qEYzp-2F2o8TAQ=
+fd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwq=
+KtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9=
+bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSewwGuthhzrAdMQtJVzj6GNo-2F-=
+2BHJOj5hwaEhhkAWPoBHAH2cdqAK6iaTht5YhEKSZYjNDSLoBkTssgbqAllbSTlo3KNha-2F8li=
+I1gF-2F2VJO2Dou1As3Tyg0dBKX6RuUbC1vWOaRnmTCsROTW355-2FximqI-3D"
+														border=3D"0">
+														<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters=
+/imgs/new-mmb-buttons/TC.png"
+															border=3D"0" style=3D"display:inline-block;vertical-align: m=
+iddle">
+													</a>
+												</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" heigth=3D"42" style=3D"height:24px;backgr=
+ound-color: #F3F3F3;">&nbsp;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" heigth=3D"42" style=3D"height:24px">&nbsp=
+;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"=
+100%" class=3D"my-booking__images"
+											style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+											<!-- <tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"text--purple" style=3D"color:#151E3B">
+													 <strong>Passengers are required to complete a health declarat=
+ion form upon arrival at some destination. We advise Customers to complete =
+the form before you travel to facilitate a smooth journey. For the list of =
+required destinations please see <a href=3D"http://links.yourbooking.hkexpr=
+ess.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo9lbg6=
+fwCu6tqgOy8TEVuhncStdIFbfvtnGKByWQYmgyFQwk4ET-2FzrC7oIFdjZTnew-3DxbOZ_Tj27q=
+EYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOU=
+JMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0=
+j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe6mf1a4oQjXD5f=
+vo0ctL7dsRcBZvnPBp52MHK-2F69JAGfLAve3geMX33M-2FWxZvUtanBYjkjtH1KlnskKDa75ib=
+HzZfszFmkBixaSJbW5accR33KdlREpXfvmoQfH9t0-2Ft5x-2BTFcOuTYypb-2B4-2FqBZwr-2F=
+k-3D" style=3D"color:#50bef0;text-decoration:none"><span class=3D"link__int=
+ernal__txt" style=3D"color:#50bef0;text-decoration:none">here</span></a>. <=
+/strong>
+													<strong>=E5=A4=9A=E5=9C=8B=E6=94=BF=E5=BA=9C=E5=B7=B2=E9=A0=92=
+=E5=B8=83=E9=87=9D=E5=B0=8D=E5=A4=96=E5=9C=8B=E6=97=85=E5=AE=A2=E7=9A=84=E5=
+=85=A5=E5=A2=83=E6=8E=AA=E6=96=BD=EF=BC=8C=E6=9C=89=E9=97=9C=E5=85=A5=E5=A2=
+=83=E9=99=90=E5=88=B6=E8=A9=B3=E6=83=85=E8=AB=8B<a
+															href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo9lbg6fwCu6tqgOy8TEVuhncSt=
+dIFbfvtnGKByWQYmgyFQwk4ET-2FzrC7oIFdjZTnew-3DSjKw_Tj27qEYzp-2F2o8TAQfd7eeZ1=
+XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIju=
+muDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImU=
+x8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSewHXFjoLRpHMVW8esYO8zIkQZakJzGTSZK=
+CEjWxtqKBiduEoC37vGovMk9BionPFbstpmK-2FO-2BMS2jHkv6w9hJQqxL6D4JM15o59C8mFy1=
+RbIKQbs7Vti7F9Cpu-2FzSmxG8Ahwu-2FyYM5xd1cAjK60-2B0oo-3D"
+															style=3D"color:#50bef0;text-decoration:none"><span class=3D"=
+link__internal__txt"
+																style=3D"color:#50bef0;text-decoration:none">=E5=88=B0=E6=
+=AD=A4</span></a>=E6=9F=A5=E7=9C=8B=E3=80=82=E8=AB=8B=E6=B3=A8=E6=84=8F=EF=
+=BC=8C=E9=80=99=E4=BA=9B=E9=99=90=E5=88=B6=E6=8E=AA=E6=96=BD=E6=88=96=E6=9C=
+=83=E9=9A=A8=E6=99=82=E6=9B=B4=E6=94=B9=EF=BC=8C=E6=97=85=E5=AE=A2=E6=87=89=
+=E6=A0=B9=E6=93=9A=E7=9B=AE=E7=9A=84=E5=9C=B0=E5=9C=8B=E5=AE=B6=E6=94=BF=E5=
+=BA=9C=E6=89=80=E7=99=BC=E5=B8=83=E7=9A=84=E8=B3=87=E8=A8=8A=E4=BB=A5=E8=A9=
+=95=E4=BC=B0=E6=97=85=E9=81=8A=E7=8B=80=E6=B3=81=E3=80=82
+														<br><br>=E5=8F=A6=E5=A4=96=EF=BC=8C=E5=90=84=E5=9C=B0=E6=94=
+=BF=E5=BA=9C=E6=AD=A3=E5=AF=A6=E6=96=BD=E9=A1=8D=E5=A4=96=E5=85=A5=E5=A2=83=
+=E8=A6=81=E6=B1=82=EF=BC=8C=E6=97=85=E5=AE=A2=E5=85=A5=E5=A2=83=E6=99=82=E5=
+=8F=AF=E8=83=BD=E9=9C=80=E8=A6=81=E5=A1=AB=E5=AF=AB=E5=81=A5=E5=BA=B7=E7=94=
+=B3=E5=A0=B1=E8=A1=A8=EF=BC=8C=E6=9C=89=E9=97=9C=E8=A9=B3=E6=83=85=E8=AB=8B=
+<a
+															href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo9lbg6fwCu6tqgOy8TEVuhncSt=
+dIFbfvtnGKByWQYmgyFQwk4ET-2FzrC7oIFdjZTnew-3DeSfH_Tj27qEYzp-2F2o8TAQfd7eeZ1=
+XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIju=
+muDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImU=
+x8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe16DAaBBgrK1euAQFAigB8u1LOCpwkPxkW=
+qaJTt6q9HJ-2Ff53p8QA0XhNN9KHx9f9w-2Bbgke8uLGo6kYS7aUWPr455uwZvHpivPyCJTjioV=
+334betLANlqqvu1Bn-2FCNW6U2oENz7cCdp1dxBaktui93ww-3D"
+															style=3D"color:#50bef0;text-decoration:none"><span class=3D"=
+link__internal__txt"
+																style=3D"color:#50bef0;text-decoration:none">=E5=88=B0=E6=
+=AD=A4</span></a>=E6=9F=A5=E7=9C=8B=E3=80=82
+													</strong>
+
+												</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr> -->
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"text--purple" style=3D"color:#151E3B">
+													<p>=E7=94=B12023=E5=B9=B49=E6=9C=881=E6=97=A5=E8=B5=B7=EF=BC=
+=8C=E6=A9=9F=E4=B8=8A=E5=8F=AF=E6=8E=A5=E5=8F=97=E7=9A=84=E4=BB=98=E6=AC=BE=
+=E6=96=B9=E5=BC=8F=E7=82=BA=E5=85=AB=E9=81=94=E9=80=9A=EF=BC=88=E4=B8=8D=E9=
+=81=A9=E7=94=A8=E6=96=BC=E5=85=8D=E7=A8=85=E5=93=81=E5=8F=8AHK Express=E5=
+=93=81=E7=89=8C=E5=95=86=E5=93=81=EF=BC=89=E3=80=81VISA=E5=8F=8AMastercard=
+=E3=80=82</p>
+												</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+											<tr>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+												<td class=3D"r-space" heigth=3D"42" style=3D"height:24px">&nbsp=
+;</td>
+												<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+
+							</table>
+
+							<!-- MAIN INFORMATION SECTIONS -->
+							<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%"
+								style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+								<tr>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td>
+										<!-- Flights -->
+										<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"=
+590" class=3D"flights"
+											style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto;backgroun=
+d-color:#FFF;">
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__header"
+														style=3D"background-color: #702B91;color:#fff;font-family:'No=
+to Sans',sans-serif,Arial,Noto;font-size:26px;font-weight:700">
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+															<td class=3D"hk-table__header__content" style=3D"height:69px=
+;vertical-align:middle">
+																<img
+																	src=3D"https://edge.hkexpress.com/static/HKE-newsletters/i=
+cons/new-icon-small-white_aircraft.png"
+																	width=3D"28" height=3D"28" border=3D"0" style=3D"display:i=
+nline-block;vertical-align:middle">
+																&nbsp;<span style=3D"font-size:20px;font-weight:500;line-he=
+ight:25px;">=E8=88=AA=E7=8F=AD</span>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr style=3D"background-color:#F3F3F3">
+												<td style=3D"height:8px"></td>
+											</tr>
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__content"
+														style=3D"color:#151E3B;font-family:'Noto Sans',sans-serif,Ari=
+al,Noto">
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space" colspan=3D"3" style=3D"height:24px">&n=
+bsp;
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"city departure"
+																style=3D"font-size:24px;font-weight:500;text-align:left;ver=
+tical-align:middle">
+																HKG</td>
+															<td class=3D"plane" width=3D"40" style=3D"text-align:center;=
+vertical-align:middle;width:40px">
+																<img src=3D"https://edge.hkexpress.com/static/HKE-newslette=
+rs/icons/airplane-purple-40px.png" width=3D"40"
+																	height=3D"38" border=3D"0" alt=3D"To">
+																															</td>
+															<td class=3D"city arrival"
+																style=3D"font-size:24px;font-weight:500;text-align:right;ve=
+rtical-align:middle">
+																TAK</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"departure" width=3D"275" style=3D"text-align:le=
+ft;vertical-align: top;">
+																<span class=3D"time"
+																	style=3D"font-size:16px;font-weight:400;line-height:19.78p=
+x">09:25</span>
+																<br>
+																<span class=3D"date"
+																	style=3D"font-size:14px;font-weight:400;line-height:17.3px=
+">14 3=E6=9C=88, 2025, =E5=91=A8=E4=BA=94</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E9=A6=99=E6=B8=AF=E5=9C=8B=E9=9A=9B=E6=A9=9F=E5=A0=B4
+																</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E5=AE=A2=E9=81=8B=E5=A4=A7=E6=A8=93 1
+																</span>
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+															<td class=3D"arrival" width=3D"275" style=3D"text-align:righ=
+t;vertical-align: top;">
+																<span class=3D"time"
+																	style=3D"font-size:16px;font-weight:400;line-height:19.78p=
+x">13:45</span>
+																<br>
+																<span class=3D"date"
+																	style=3D"font-size:14px;font-weight:400;line-height:17.3px=
+">14 3=E6=9C=88, 2025, =E5=91=A8=E4=BA=94</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E9=AB=98=E6=9D=BE=E6=A9=9F=E5=A0=B4
+																</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																=09
+																</span>
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"line-top" colspan=3D"3" style=3D"border-top:1px=
+ #C3C6CD solid">
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"city departure"
+																style=3D"font-size:24px;font-weight:500;text-align:left;ver=
+tical-align:middle">
+																TAK</td>
+															<td class=3D"plane" width=3D"40" style=3D"text-align:center;=
+vertical-align:middle;width:40px">
+																<img src=3D"https://edge.hkexpress.com/static/HKE-newslette=
+rs/icons/airplane-purple-40px.png" width=3D"40"
+																	height=3D"38" border=3D"0" alt=3D"To">
+																															</td>
+															<td class=3D"city arrival"
+																style=3D"font-size:24px;font-weight:500;text-align:right;ve=
+rtical-align:middle">
+																HKG</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"departure" width=3D"275" style=3D"text-align:le=
+ft;vertical-align: top;">
+																<span class=3D"time"
+																	style=3D"font-size:16px;font-weight:400;line-height:19.78p=
+x">14:35</span>
+																<br>
+																<span class=3D"date"
+																	style=3D"font-size:14px;font-weight:400;line-height:17.3px=
+">19 3=E6=9C=88, 2025, =E5=91=A8=E4=B8=89</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E9=AB=98=E6=9D=BE=E6=A9=9F=E5=A0=B4
+																</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																=09
+																</span>
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+															<td class=3D"arrival" width=3D"275" style=3D"text-align:righ=
+t;vertical-align: top;">
+																<span class=3D"time"
+																	style=3D"font-size:16px;font-weight:400;line-height:19.78p=
+x">18:00</span>
+																<br>
+																<span class=3D"date"
+																	style=3D"font-size:14px;font-weight:400;line-height:17.3px=
+">19 3=E6=9C=88, 2025, =E5=91=A8=E4=B8=89</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E9=A6=99=E6=B8=AF=E5=9C=8B=E9=9A=9B=E6=A9=9F=E5=A0=B4
+																</span>
+																<br>
+																<span class=3D"airport" style=3D"font-size:14px;font-weight=
+:500;line-height:17.3px">
+																	=E5=AE=A2=E9=81=8B=E5=A4=A7=E6=A8=93 1
+																</span>
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+
+
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space" colspan=3D"3" style=3D"height:24px">&n=
+bsp;
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td>
+										<!-- Booking -->
+										<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"=
+590" class=3D"booking"
+											style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto;backgroun=
+d-color:#FFF">
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__header"
+														style=3D"background-color: #702B91;color:#fff;font-family:'No=
+to Sans',sans-serif,Arial,Noto;font-size:26px;font-weight:700">
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+															<td class=3D"hk-table__header__content" style=3D"height:69px=
+;vertical-align:middle">
+																<img
+																	src=3D"https://edge.hkexpress.com/static/HKE-newsletters/i=
+cons/new-icon-small-white_user.png"
+																	width=3D"28" height=3D"28" border=3D"0" style=3D"display:i=
+nline-block;vertical-align:middle">
+																&nbsp;<span style=3D"font-size:20px;font-weight:500;line-he=
+ight:25px;">=E8=A8=82=E5=96=AE</span>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__content"
+														style=3D"color:#151E3B;font-family:'Noto Sans',sans-serif,Ari=
+al,Noto">
+<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space" colspan=3D"2" style=3D"height:24px">&n=
+bsp;
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"hk-table__content__title line-bottom" colspan=
+=3D"4"
+																style=3D"border-bottom:2px #C3C6CD solid;color:#928C96;font=
+-size:16px;font-weight:500;padding-bottom:10px">
+																<strong>
+																	=E5=85=88=E7=94=9F Wing Yiu
+																	Cheung
+																</strong>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+<td class=3D"hk-table__content__list" style=3D"line-height:20px" width=3D"2=
+68" valign=3D"top">
+																<table>
+																    <tr><td></td></tr>
+																    <tr>
+																        <td><strong class=3D"hk-table__content__list__title=
+" style=3D"color:#702B91;display:inline-block;height:32px;font-size:18px;">=
+=E5=87=BA=E7=99=BC</strong></td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px"><span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=88=AA=E7=8F=AD</span><span class=3D"gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:17.3px=
+;">
+																	- UO642</span></td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- =E9=9A=A8=E5=BF=83=E9=A3=9B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=B4=9A=E5=88=A5</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- D</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- NA</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E4=BF=9D=E9=9A=AA</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E5=BA=A7=E4=BD=8D</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- 18C</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- 1 x 20kg =E5=AF=84=E8=89=99=E8=A1=8C=E6=9D=
+=8E=EF=BC=88=E4=B8=80=E4=BB=B6=EF=BC=89</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=
+=E6=9D=90</span><span class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">U-First =E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99</=
+span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																	<tr>
+																		<td style=3D"padding-left: 6px">
+																			<span
+																				style=3D"font-size:14px;font-weight:300;height:25px;dis=
+play:inline-block;">=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1</span><sp=
+an
+																				class=3D"gray-text" style=3D"font-size:14px;font-weight=
+:600;line-height:17.3px;">
+																				- NA</span>
+																		</td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;" data-en=3D"Carbon Offset">=E7=A2=B3=E6=8A=B5=
+=E9=8A=B7</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																</table>
+															</td><td class=3D"hk-table__content__list" style=3D"line-hei=
+ght:20px" width=3D"268" valign=3D"top">
+																<table>
+																    <tr><td></td></tr>
+																    <tr>
+																        <td><strong class=3D"hk-table__content__list__title=
+" style=3D"color:#702B91;display:inline-block;height:32px;font-size:18px;">=
+=E5=9B=9E=E7=A8=8B</strong></td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px"><span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=88=AA=E7=8F=AD</span><span class=3D"gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:17.3px=
+;">
+																	- UO643</span></td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- =E9=9A=A8=E5=BF=83=E9=A3=9B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=B4=9A=E5=88=A5</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- D</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- NA</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E4=BF=9D=E9=9A=AA</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E5=BA=A7=E4=BD=8D</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- 20C</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- 1 x 20kg =E5=AF=84=E8=89=99=E8=A1=8C=E6=9D=
+=8E=EF=BC=88=E4=B8=80=E4=BB=B6=EF=BC=89</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=
+=E6=9D=90</span><span class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">U-First =E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99</=
+span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																	<tr>
+																		<td style=3D"padding-left: 6px">
+																			<span
+																				style=3D"font-size:14px;font-weight:300;height:25px;dis=
+play:inline-block;">=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1</span><sp=
+an
+																				class=3D"gray-text" style=3D"font-size:14px;font-weight=
+:600;line-height:17.3px;">
+																				- NA</span>
+																		</td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;" data-en=3D"Carbon Offset">=E7=A2=B3=E6=8A=B5=
+=E9=8A=B7</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																</table>
+															</td>															<td class=3D"c-space" style=3D"width:26p=
+x">&nbsp;
+															</td>
+
+														</tr>
+
+
+<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space" colspan=3D"2" style=3D"height:24px">&n=
+bsp;
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"hk-table__content__title line-bottom" colspan=
+=3D"4"
+																style=3D"border-bottom:2px #C3C6CD solid;color:#928C96;font=
+-size:16px;font-weight:500;padding-bottom:10px">
+																<strong>
+																	=E5=B0=8F=E5=A7=90 Wing Yee
+																	Ting
+																</strong>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+<td class=3D"hk-table__content__list" style=3D"line-height:20px" width=3D"2=
+68" valign=3D"top">
+																<table>
+																    <tr><td></td></tr>
+																    <tr>
+																        <td><strong class=3D"hk-table__content__list__title=
+" style=3D"color:#702B91;display:inline-block;height:32px;font-size:18px;">=
+=E5=87=BA=E7=99=BC</strong></td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px"><span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=88=AA=E7=8F=AD</span><span class=3D"gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:17.3px=
+;">
+																	- UO642</span></td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- =E9=9A=A8=E5=BF=83=E9=A3=9B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=B4=9A=E5=88=A5</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- D</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- NA</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E4=BF=9D=E9=9A=AA</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E5=BA=A7=E4=BD=8D</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- 18B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- 1 x 20kg =E5=AF=84=E8=89=99=E8=A1=8C=E6=9D=
+=8E=EF=BC=88=E4=B8=80=E4=BB=B6=EF=BC=89</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=
+=E6=9D=90</span><span class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">U-First =E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99</=
+span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																	<tr>
+																		<td style=3D"padding-left: 6px">
+																			<span
+																				style=3D"font-size:14px;font-weight:300;height:25px;dis=
+play:inline-block;">=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1</span><sp=
+an
+																				class=3D"gray-text" style=3D"font-size:14px;font-weight=
+:600;line-height:17.3px;">
+																				- NA</span>
+																		</td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;" data-en=3D"Carbon Offset">=E7=A2=B3=E6=8A=B5=
+=E9=8A=B7</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																</table>
+															</td><td class=3D"hk-table__content__list" style=3D"line-hei=
+ght:20px" width=3D"268" valign=3D"top">
+																<table>
+																    <tr><td></td></tr>
+																    <tr>
+																        <td><strong class=3D"hk-table__content__list__title=
+" style=3D"color:#702B91;display:inline-block;height:32px;font-size:18px;">=
+=E5=9B=9E=E7=A8=8B</strong></td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px"><span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=88=AA=E7=8F=AD</span><span class=3D"gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:17.3px=
+;">
+																	- UO643</span></td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=A8=AE=E9=A1=9E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- =E9=9A=A8=E5=BF=83=E9=A3=9B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E7=A5=A8=E5=83=B9=E7=B4=9A=E5=88=A5</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- D</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+																            <span style=3D"font-size:14px;font-weight:300;h=
+eight:25px;display:inline-block;">=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E</spa=
+n><span class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-he=
+ight:17.3px;">
+																	- NA</span>
+																	    </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E4=BF=9D=E9=9A=AA</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E5=BA=A7=E4=BD=8D</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- 20B</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E</span><sp=
+an class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- 1 x 20kg =E5=AF=84=E8=89=99=E8=A1=8C=E6=9D=
+=8E=EF=BC=88=E4=B8=80=E4=BB=B6=EF=BC=89</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=
+=E6=9D=90</span><span class=3D"gray-text"
+            																	style=3D"font-size:14px;font-weight:600;line-h=
+eight:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;">U-First =E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99</=
+span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																	<tr>
+																		<td style=3D"padding-left: 6px">
+																			<span
+																				style=3D"font-size:14px;font-weight:300;height:25px;dis=
+play:inline-block;">=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1</span><sp=
+an
+																				class=3D"gray-text" style=3D"font-size:14px;font-weight=
+:600;line-height:17.3px;">
+																				- NA</span>
+																		</td>
+																	</tr>
+																    <tr>
+																        <td style=3D"padding-left: 6px">
+            																<span
+            																	style=3D"font-size:14px;font-weight:300;height=
+:25px;display:inline-block;" data-en=3D"Carbon Offset">=E7=A2=B3=E6=8A=B5=
+=E9=8A=B7</span><span
+            																	class=3D"gray-text" style=3D"font-size:14px;fo=
+nt-weight:600;line-height:17.3px;">
+            																	- NA</span>
+																        </td>
+																    </tr>
+																</table>
+															</td>															<td class=3D"c-space" style=3D"width:26p=
+x">&nbsp;
+															</td>
+
+														</tr>
+
+
+
+														<tr>
+															<td colspan=3D"4" style=3D"height: 26px;"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+
+								<!-- Payment -->
+								<tr style=3D"background-color: #F3F3F3;">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td>
+										<!-- Payment -->
+										<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"=
+590" class=3D"payment"
+											style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto;backgroun=
+d-color:#FFF">
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__header"
+														style=3D"background-color: #702B91;color:#fff;font-family:'No=
+to Sans',sans-serif,Arial,Noto;font-size:26px;font-weight:700">
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">
+																&nbsp;
+																<!-- <img src=3D"http://hk-ux.newshore.es/HKE-newsletters/i=
+mgs/border-left.jpg" width=3D"26" border=3D"0" height=3D"69"> -->
+															</td>
+															<td class=3D"hk-table__header__content" style=3D"height:69px=
+;vertical-align:middle">
+																<img
+																	src=3D"https://edge.hkexpress.com/static/HKE-newsletters/i=
+cons/new-icon-small-white_payment.png"
+																	width=3D"28" height=3D"28" border=3D"0" style=3D"display:i=
+nline-block;vertical-align:middle">
+																&nbsp;<span style=3D"font-size:20px;font-weight:500;line-he=
+ight:25px;">=E7=A5=A8=E5=83=B9=E5=8F=8A=E6=94=B6=E8=B2=BB</span>
+															</td>
+															<td class=3D"payment__sub-title"
+																style=3D"font-size:20px;font-weight:500;line-height:25px;te=
+xt-align:right;vertical-align:middle"></td>
+															<td class=3D"payment__sub-title"
+																style=3D"font-size:20px;text-align:right;vertical-align:mid=
+dle">=E7=B8=BD=E8=A8=88:
+																HKD 2616.00</td>
+															<td class=3D"c-space" style=3D"width:26px">
+																&nbsp;
+																<!-- <img src=3D"http://hk-ux.newshore.es/HKE-newsletters/i=
+mgs/border-right.jpg" width=3D"26" border=3D"0" height=3D"69"> -->
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" class=3D"hk-table__content"
+														style=3D"color:#151E3B;font-family:'Noto Sans',sans-serif,Ari=
+al,Noto">
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space" colspan=3D"2" style=3D"height:24px">&n=
+bsp;
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"hk-table__content__title line-bottom" colspan=
+=3D"2"
+																style=3D"border-bottom:2px #C3C6CD solid;color:#928C96;font=
+-size:16px;font-weight:500;padding-bottom:10px">
+																<strong>=E6=94=B6=E8=B2=BB=E8=A9=B3=E6=83=85</strong>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"hk-table__content__list" style=3D"line-height:2=
+0px" width=3D"268" valign=3D"top">
+																<br>
+																																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E7=A5=A8=E5=83=B9</span>
+																<span class=3D"gray-text" style=3D"font-size:14px;font-weig=
+ht:600;line-height:17.3px;">
+																	- HKD 1040.00</span>
+																<br>
+																<span style=3D"font-size:14px;font-weight:300;height:22px;d=
+isplay:inline-block;">=E7=87=83=E6=B2=B9=E9=99=84=E5=8A=A0=E8=B2=BB</span><=
+span class=3D"gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:22px;"=
+>
+																	- HKD 640.00</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E5=85=B6=E4=BB=96=E8=B2=BB=E7=94=A8=E5=8F=8A=E7=A8=85=E9=
+=A0=85</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- HKD 736.00</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E4=B8=8D=E8=A8=AD=E9=80=80=E9=82=84=E7=9A=84=E7=A5=A8=E5=
+=83=B9=E5=B7=AE=E9=A1=8D</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E7=9F=AD=E4=BF=A1=E7=99=BC=E9=80=81=E8=A1=8C=E7=A8=8B=E5=
+=96=AE</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=A8=97=E9=81=8B=E8=A1=8C=E6=9D=8E</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E8=A8=97=E9=81=8B=E9=81=8B=E5=8B=95=E5=99=A8=E6=9D=90</sp=
+an><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E6=A9=9F=E4=B8=8A=E9=A4=90=E9=BB=9E</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E5=BA=A7=E4=BD=8D</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- HKD 200.00</span>
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"hk-table__content__list" style=3D"line-height:2=
+0px" width=3D"298" valign=3D"top">
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E4=BF=9D=E9=9A=AA</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E7=A5=A8=E5=8B=99=E8=A1=8C=E6=94=BF=E8=B2=BB</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- HKD 0.00</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E6=9B=B4=E6=94=B9=E8=B2=BB</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- NA</span>
+																<br>
+																<span style=3D"font-size:14px;font-weight:300;height:25px;d=
+isplay:inline-block;">U-First
+																	=E5=84=AA=E5=85=88=E6=9C=8D=E5=8B=99</span><span class=3D"=
+gray-text"
+																	style=3D"font-size:14px;font-weight:600;line-height:17.3px=
+;">
+																	- NA</span>
+																	<br>
+	<span
+		style=3D"font-size:14px;font-weight:300;height:25px;display:inline-block;=
+">=E6=97=85=E9=81=8A=E6=95=B8=E6=93=9A=E5=8D=A1</span><span
+		class=3D"gray-text" style=3D"font-size:14px;font-weight:600;line-height:1=
+7.3px;"> - NA</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;" data-en=3D"Carbon Offset">=E7=A2=B3=E6=8A=B5=E9=8A=B7</spa=
+n><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;"> - NA</span>
+																<br>
+																															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"r-space line-top" colspan=3D"2" style=3D"height=
+:24px">
+																<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;
+																</p>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+<tr>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+															<td class=3D"hk-table__content__list" style=3D"line-height:2=
+0px" width=3D"268" valign=3D"top">
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E4=BB=98=E6=AC=BE=E6=96=B9=E6=B3=95</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- =E8=90=AC=E4=BA=8B=E9=81=94=E5=8D=A1</span>
+
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E6=97=A5=E6=9C=9F</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- 18/01/2025 19:06 HK Time</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E7=8B=80=E6=85=8B</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- =E5=B7=B2=E9=80=9A=E9=81=8E</span>
+															</td>
+															<td class=3D"hk-table__content__list" style=3D"line-height:2=
+0px" width=3D"268" valign=3D"top">
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E5=AE=9A=E5=83=B9=E8=B2=A8=E5=B9=A3</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- HKD 2616.00</span>
+																<br>
+																<span
+																	style=3D"font-size:14px;font-weight:300;height:25px;displa=
+y:inline-block;">=E4=BA=A4=E6=98=93=E8=B2=A8=E5=B9=A3</span><span
+																	class=3D"gray-text" style=3D"font-size:14px;font-weight:60=
+0;line-height:17.3px;">
+																	- HKD 2616.00</span>
+																<br>
+															</td>
+															<td class=3D"c-space" style=3D"width:26px">&nbsp;
+															</td>
+														</tr>
+
+
+														<tr>
+															<td colspan=3D"4" style=3D"height: 26px;"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+
+
+								<tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr>
+								<!-- <tr style=3D"background-color:#F3F3F3">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr> -->
+								<!-- <tr style=3D"background-color:#FFF">
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+									<td class=3D"r-space" style=3D"height:24px">&nbsp;</td>
+									<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+								</tr> -->
+							</table>
+						=09
+							<!-- LEGAL -->
+							<table class=3D"legal-text" style=3D"background-color: #F3F3F3; marg=
+in: 0; padding: 0; width: 100%; font-family:'Noto Sans',sans-serif,Arial,No=
+to">
+								<tbody style=3D"margin: 0; padding: 0;">
+									<tr>
+										<td height=3D"24">&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr style=3D"margin: 0; padding: 0;">
+										<td width=3D"30" style=3D"margin: 0; padding: 0;"></td>
+										<td style=3D"vertical-align: middle; margin: 0; padding: 0;">
+											<p style=3D"font-size: 14px; line-height: 18px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY7NyUoasKAyzU9tsZLsOt59OJp0THjUMIPHH7mFH3Cb3-2F=
+Pld4W0t-2Fmic57q2jfwKS5cOG-2Bbekog11LAeswomahteFuj67dYTMYq7QaQnaJvvn6OqSZZI=
+vuDzijOJuq3Dyh-2BLUeYJROExm4OgwW3DrNk-3DvPUS_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6=
+eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy=
+-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3d=
+LgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe79iGk83cgwDC-2BhB-2F5R0af8JOrrewoth-2B=
+qnh78B6bzA6uUGsoNIFiHqqjl5SIaRvtUmrClP5PbxR5xuV1z-2FRkYJCGe0-2FPqyoBdOx2j3h=
+aau4mh6-2Bch49vWGfOkImZYIuSdp8KCIq7lDqGEMjv8ED7Zg-3D" target=3D"_blank" sty=
+le=3D" color: #151E3B; "><strong>=E8=AB=8B=E4=BB=94=E7=B4=B0=E9=96=B1=E8=AE=
+=80=E6=9C=AC=E6=A2=9D=E6=AC=BE=E5=8F=8A=E7=B4=B0=E5=89=87=EF=BC=8C=E8=AB=8B=
+=E9=BB=9E=E6=93=8A=E6=AD=A4=E9=8F=88=E6=8E=A5</strong></a> =E3=80=82=E5=AE=
+=8C=E6=88=90=E9=A0=90=E8=A8=82=E9=81=8E=E7=A8=8B=E5=BE=8C=E6=82=A8=E8=88=87=
+=E9=A6=99=E6=B8=AF=E5=BF=AB=E9=81=8B=E4=B9=8B=E9=96=93=E5=B7=B2=E6=A7=8B=E6=
+=88=90=E5=90=88=E5=90=8C=E9=97=9C=E4=BF=82=EF=BC=8C=E6=82=A8=E7=A2=BA=E8=AA=
+=8D=E6=82=A8=E5=B7=B2=E7=B6=93=E9=96=B1=E8=AE=80=E4=B8=A6=E7=90=86=E8=A7=A3=
+=E6=9C=AC=E6=A2=9D=E6=AC=BE=E5=92=8C=E6=A2=9D=E4=BB=B6=E3=80=82
+											</p>
+										</td>
+										<td width=3D"30"></td>
+									</tr>
+									<tr>
+										<td height=3D"44">&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+							<!--END of Legal-->
+
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" clas=
+s=3D"information"
+style=3D"font-family:'Noto Sans', sans-serif, Arial, Noto; text-align: left=
+;">
+<tr class=3D"information__header" height=3D"50" style=3D"height:50px">
+	<td class=3D"c-space" style=3D"width:26px;">&nbsp;</td>
+	<td class=3D"information__header__title"
+		style=3D"color: #151E3B; font-size: 24px; font-weight: 300; font-family: =
+'Noto Sans', sans-serif, Nato; vertical-align: middle; border-bottom: 2px s=
+olid #737889;">
+		=E9=87=8D=E8=A6=81=E8=B3=87=E8=A8=8A</td>
+	<td class=3D"c-space" style=3D"width:40px;">
+	</td>
+</tr>
+
+<tr>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+	<td>
+		<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;</p>
+		<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%"
+			style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto; border-top: soli=
+d 1px #F3F3F3;">
+			<tr>
+				<td class=3D"information__item__header baggage-allowance"
+					style=3D"color:#6e2d91;font-size:22px;width:95px;vertical-align:top;">
+					<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/icons/ic=
+on-small_baggage.png"
+						border=3D"0" width=3D"80">
+				</td>
+				<td>
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"10"></td>
+							</tr>
+							<tr>
+								<td>
+									<p
+										style=3D"margin: 0;color: #151E3B; font-size: 16px; font-weight: =
+600; line-height: 20px;">
+										=E2=80=8B=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=8E=E9=99=90=E9=A1=8D=
+=E2=80=8B</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"6"></td>
+							</tr>
+						</tbody>
+					</table>
+						<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 1=
+8px;">=E6=AF=8F=E4=BD=8D=E6=97=85=E5=AE=A2=E5=8F=AA=E5=8F=AF=E6=94=9C=E5=B8=
+=B6=E8=A9=B3=E5=88=97=E6=96=BC=E4=B8=8B=E6=96=B9=E7=9A=84=E6=89=8B=E6=8F=90=
+=E8=A1=8C=E6=9D=8E=E7=99=BB=E6=A9=9F=EF=BC=8C=E5=85=B6=E7=B8=BD=E9=87=8D=E9=
+=87=8F=E4=BA=A6=E4=B8=8D=E5=8F=AF=E4=BB=A5=E8=B6=85=E5=87=BA7=E5=85=AC=E6=
+=96=A4=E6=88=9615.4=E7=A3=85=E3=80=82=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=93=81=
+=E5=B0=BA=E5=AF=B8=E4=B8=8D=E5=8F=AF=E5=A4=A7=E6=96=BC <strong>40 (=E9=95=
+=B7) x 25 (=E5=AF=AC) x 20 (=E9=AB=98)</strong> =E5=8E=98=E7=B1=B3 =EF=BC=
+=8C  =E4=B8=A6=E5=BF=85=E9=A0=88=E6=94=BE=E6=96=BC=E5=89=8D=E6=96=B9=E5=BA=
+=A7=E4=BD=8D=E4=B8=8B=E6=96=B9=E3=80=82=E8=80=8C=E7=99=BB=E6=A9=9F=E8=A1=8C=
+=E6=9D=8E=E5=B0=BA=E5=AF=B8=E5=89=87=E4=B8=8D=E5=8F=AF=E5=A4=A7=E6=96=BC <s=
+trong>56 (=E9=95=B7) x 36 (=E5=AF=AC) x 23 (=E9=AB=98)</strong> =E5=8E=98=
+=E7=B1=B3 =EF=BC=88=E8=BC=AA=E5=AD=90=E3=80=81=E6=8A=8A=E6=89=8B=E5=92=8C=
+=E5=81=B4=E8=A2=8B=E7=AD=89=E5=90=8C=E6=A8=A3=E8=A8=88=E7=AE=97=E5=9C=A8=E5=
+=85=A7=EF=BC=89=E3=80=82=E6=A9=9F=E5=A0=B4=E7=A6=81=E5=8D=80=E5=85=A7=E8=B3=
+=BC=E8=B2=B7=E7=9A=84=E5=95=86=E5=93=81=E4=BA=A6=E6=9C=83=E8=A2=AB=E8=A6=96=
+=E4=BD=9C=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=8E=E3=80=82=E8=B6=85=E5=87=BA=E9=
+=99=90=E5=88=B6=E7=9A=84=E7=89=A9=E5=93=81=E5=B0=87=E9=9C=80=E5=AF=84=E8=89=
+=99=E4=B8=A6=E6=9C=83=E6=94=B6=E5=8F=96<a href=3D"http://links.yourbooking.=
+hkexpress.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTx=
+o9vTGowrfzJY70b3K0SFbNEPf5WtpH2BVS7cb9O6nXtvRbpJY4gLRGACkocBAGgIA8-3D6-ZX_T=
+j27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3l=
+rfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCq=
+Iom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe2E6Lza-2F=
+34LorfXPGwP2a3mY-2FkkEK-2Fz3xNcPxWy5kxTpJaPcU2gZ6HBKSO0jY73hHmrnOKG5Ecvr96M=
+Gk-2FnyLdFT0-2FthdUx7tL001wTQhYAQpphfNiaCT-2BHDTJJT4LZygjCUX8yIzd-2FdhgxWoC=
+cXzIE-3D" style=3D"color: #000">=E9=A1=8D=E5=A4=96=E8=B2=BB=E7=94=A8</a>=E3=
+=80=82=20
+					</span>
+					<br><br>
+					<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 18=
+px;">
+					=E8=BC=95=E4=BE=BF=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=
+=93=81<br>
+					=E7=B6=93=E6=BF=9F=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=
+=93=81 =E5=8F=8A 1=E4=BB=B6=E7=99=BB=E6=A9=9F=E8=A1=8C=E6=9D=8E<br>
+					=E9=9A=A8=E5=BF=83=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=
+=93=81<br>
+					=E7=84=A1=E6=86=82=E9=A3=9B: 1=E4=BB=B6=E9=9A=A8=E8=BA=AB=E7=89=A9=E5=
+=93=81 =E5=8F=8A 1=E4=BB=B6=E7=99=BB=E6=A9=9F=E8=A1=8C=E6=9D=8E
+					</span>
+					<br><br>
+					<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 18=
+px;">		    =E6=96=BC2024=E5=B9=B45=E6=9C=888=E6=97=A5=E4=B9=8B=E5=89=8D=E9=
+=A0=90=E8=A8=82=E6=A9=9F=E7=A5=A8=E7=9A=84=E6=97=85=E5=AE=A2=EF=BC=8C=E8=AB=
+=8B=E5=8F=83=E8=80=83=E5=88=9D=E6=AC=A1=E9=A0=90=E8=A8=82=E6=99=82=E7=9A=84=
+=E8=A1=8C=E7=A8=8B=E7=A2=BA=E8=AA=8D=E9=9B=BB=E9=83=B5=E6=89=80=E5=88=97=E6=
+=98=8E=E7=9A=84=E6=89=8B=E6=8F=90=E8=A1=8C=E6=9D=8E=E9=99=90=E9=A1=8D=E6=88=
+=96=E8=88=87=E5=AE=A2=E6=88=B6=E8=81=AF=E7=B9=AB=E5=9C=98=E9=9A=8A=E6=9F=A5=
+=E8=A9=A2=E3=80=82</span>
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"15"></td>
+							</tr>
+							<tr>
+								<td>
+									<p style=3D"margin: 0;">
+										<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3D=
+u001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo9vTGowrfzJY70b3K0SFbNE5C4fEZ=
+AIUdDonCmHTF7dfNUFM8Ci7J5sgvLbhy6m0zE-3Dpc5A_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6=
+eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy=
+-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3d=
+LgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSew5WI5spanALRMWigSZ0XKnEi8q5FuSGYIMmXUM=
+e-2BqhNXwNwjg4Y5k-2FVKEEf02EYpnC9rSfzBMnogManKkU9zUWHq4PEJWYW3YLkM0ViIDPy-2=
+B6-2Bly7geLpmBrBeFaHxFgv-2BU91frBHC2deh9D-2Fpw7lw-3D"
+											style=3D"color: #21B9DA; text-decoration:none; font-size: 14px;"=
+><span
+												class=3D"link__internal__txt"
+												style=3D"color:#50bef0;text-decoration:none; font-weight: 600;"=
+>=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A<span
+													style=3D"font-size: 20px; font-weight: 300">&nbsp;
+													&#8250;</span></span></a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"19"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+</tr>
+<tr>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+	<td>
+		<table cellspacing=3D"0" cellpadding=3D"0" width=3D"100%"
+			style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto; border-top: soli=
+d 1px #F3F3F3;">
+			<tr>
+				<td class=3D"information__item__header baggage-allowance"
+					style=3D"color:#6e2d91;font-size:22px;width:95px;vertical-align:top;">
+					<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/icons/ic=
+on-small_online-check.png"
+						border=3D"0" width=3D"80">
+				</td>
+				<td class=3D"information__item__content text">
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"10"></td>
+							</tr>
+							<tr>
+								<td>
+									<p
+										style=3D"margin: 0;color: #151E3B; font-size: 16px; font-weight: =
+600; line-height: 20px;">
+										=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=E6=89=8B=
+=E7=BA=8C</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"6"></td>
+							</tr>
+						</tbody>
+					</table>
+					<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 18=
+px;">
+						=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=E6=9C=8D=E5=8B=
+=99=E5=8F=AA=E9=81=A9=E7=94=A8=E6=96=BC=E6=8C=87=E5=AE=9A=E8=88=AA=E7=B7=9A=
+=EF=BC=8C=E8=80=8C=E6=96=BC=E9=83=A8=E5=88=86=E6=A9=9F=E5=A0=B4=E4=BB=8D=E9=
+=9C=80=E8=A6=81=E6=97=85=E5=AE=A2=E5=9C=A8=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=
+=86=E7=99=BB=E6=A9=9F=E6=89=8B=E7=BA=8C=E5=BE=8C=E5=89=8D=E5=BE=80=E6=A9=9F=
+=E5=A0=B4=E7=99=BB=E6=A9=9F=E6=AB=83=E6=AA=AF=E4=BB=A5=E6=AA=A2=E6=9F=A5=E6=
+=97=85=E9=81=8A=E8=AD=89=E4=BB=B6=E5=8F=8A=E9=A0=98=E5=8F=96=E7=99=BB=E6=A9=
+=9F=E8=AD=89=E3=80=82=E5=A6=82=E5=90=8C=E8=A1=8C=E8=80=85=E6=9C=89=E5=AC=B0=
+=E5=85=92=E6=88=96=E4=BB=BB=E4=BD=95=E9=9C=80=E8=A6=81=E7=89=B9=E5=88=A5=E5=
+=8D=94=E5=8A=A9=E7=9A=84=E6=97=85=E5=AE=A2=EF=BC=8C=E5=B0=87=E4=B8=8D=E9=81=
+=A9=E7=94=A8=E6=96=BC=E7=B6=B2=E4=B8=8A=E8=BE=A6=E7=90=86=E7=99=BB=E6=A9=9F=
+=E6=9C=8D=E5=8B=99=E3=80=82
+					</span>
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"15"></td>
+							</tr>
+							<tr>
+								<td>
+									<p style=3D"margin:0;"><a href=3D"http://links.yourbooking.hkexpre=
+ss.com/ls/click?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2Fg4L=
+ccUMX9fGLQ-2FsfO93yf2uHlwxtYlMIKN0-2F20q4IhKh4CbUXTR3orHcTkM2damk-3D2Nrl_Tj=
+27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lr=
+fOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqI=
+om0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe8xODyoN1Qh=
+MGHlVKe4lzW1Zbb6OPQ4bXjgdgGVMUFAyHuV-2Fjhyk9uwjUVoOcntHDwxU88lWT56tnP2N2mms=
+16pIyJBPSaMAk4PGnEC8nScdHxj6uXlt9-2Be69i8RaCXm7fNOKHhPxZg8ONW0kiOXyjk-3D"
+											style=3D"color: #21B9DA; text-decoration:none; font-size: 14px;"=
+><span
+												class=3D"link__internal__txt"
+												style=3D"color:#50bef0;text-decoration:none; font-weight: 600;"=
+>=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A<span
+													style=3D"font-size: 20px; font-weight: 300">&nbsp;
+													&#8250;</span></span></a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"19"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+</tr>
+<tr>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+	<td>
+		<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%"
+			style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto; border-top: soli=
+d 1px #F3F3F3;">
+			<tr>
+				<td class=3D"information__item__header oounter-check-in"
+					style=3D"color:#6e2d91;font-size:22px;width:95px;vertical-align:top;">
+					<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/icons/ic=
+on-small_check-in.png"
+						border=3D"0" width=3D"80">
+				</td>
+				<td class=3D"information__item__content text">
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"10"></td>
+							</tr>
+							<tr>
+								<td>
+									<p
+										style=3D"margin: 0;color: #151E3B; font-size: 16px; font-weight: =
+600; line-height: 20px;">
+										=E6=A9=9F=E5=A0=B4=E6=AB=83=E6=AA=AF=E8=BE=A6=E7=90=86=E7=99=BB=
+=E6=A9=9F</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"6"></td>
+							</tr>
+						</tbody>
+					</table>
+					<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 18=
+px;">
+						=E9=A6=99=E6=B8=AF=E5=9C=8B=E9=9A=9B=E6=A9=9F=E5=A0=B4=E7=99=BB=E6=A9=
+=9F=E6=89=8B=E7=BA=8C=E6=AB=83=E6=AA=AF=E6=9C=83=E6=96=BC=E8=88=AA=E7=8F=AD=
+=E9=A0=90=E5=AE=9A=E9=9B=A2=E5=A2=83=E6=99=82=E9=96=933=E5=B0=8F=E6=99=82=
+=E5=89=8D=E9=96=8B=E5=A7=8B=E6=9C=8D=E5=8B=99=EF=BC=8C=E4=B8=A6=E6=96=BC=E8=
+=88=AA=E7=8F=AD=E8=B5=B7=E9=A3=9B=E5=89=8D<strong>1=E5=B0=8F=E6=99=82</stro=
+ng>=E5=81=9C=E6=AD=A2=E6=9C=8D=E5=8B=99=E3=80=82=E6=8C=89=E4=BA=86=E8=A7=A3=
+=E6=9B=B4=E5=A4=9A=E6=9F=A5=E9=96=B1=E5=85=B6=E4=BB=96=E6=A9=9F=E5=A0=B4=E7=
+=9A=84=E7=99=BB=E6=A9=9F=E6=AB=83=E6=AA=AF=E6=9C=8D=E5=8B=99=E6=99=82=E9=96=
+=93=E3=80=82
+					</span>
+
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"15"></td>
+							</tr>
+							<tr>
+								<td>
+									<p style=3D"margin:0;">
+										<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3D=
+u001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2Fg4LccUMX9fGLQ-2FsfO93yfCZ=
+iMFD-2F8Hy5fEpxMk0HXJdpITz9Sg4g-2FFSgqpvN5OJw-2Fwh7VdRWyetvQP67koV6HpHP1ztt=
+NGGP46xcRzL9XvaXbvZR26DeB4QCycbRyen4T78nCfxpQoFTsHRHeC1b69rTVxIN7ggrhA-2Fos=
+t4PgoCaGNspx6dnDTZ39m-2FhVlwPxAAQkFtiCNBE-2FyEwfEiQqitXW_Tj27qEYzp-2F2o8TAQ=
+fd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwq=
+KtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9=
+bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSeyaBzWIE1EbVyJtVbFvT-2F5dEY=
+cbwNMRbalhmg6IQU-2Bb4GbIA31QCYJ-2FZR3P-2FdFDb-2FfPncPSFwYeaXhvPY7j64SsBwhd-=
+2BMAFsab9nV8vWiR9l0GCiEouZzAut85odaPGcrvfo2jwMY-2BsGCtUeAtruLh0-3D"
+											style=3D"color: #21B9DA; text-decoration:none; font-size: 14px;"=
+><span
+												class=3D"link__internal__txt"
+												style=3D"color:#50bef0;text-decoration:none; font-weight: 600;"=
+>=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A<span
+													style=3D"font-size: 20px; font-weight: 300">&nbsp;
+													&#8250;</span></span></a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"19"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+</tr>
+<tr>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+	<td>
+		<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%"
+			style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto; border-top: soli=
+d 1px #F3F3F3;">
+			<tr>
+				<td class=3D"information__item__header oounter-check-in"
+					style=3D"color:#6e2d91;font-size:22px;width:95px;vertical-align:top;">
+					<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/icons/ic=
+on-small_queue.png"
+						width=3D"80" border=3D"0">
+				</td>
+				<td class=3D"information__item__content text">
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"10"></td>
+							</tr>
+							<tr>
+								<td>
+									<p
+										style=3D"margin: 0;color: #151E3B; font-size: 16px; font-weight: =
+600; line-height: 20px;">
+										=E7=99=BB=E6=A9=9F</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"6"></td>
+							</tr>
+						</tbody>
+					</table>
+					<span style=3D"margin: 0; padding: 0; font-size: 14px; line-height: 18=
+px;">
+						=E7=99=BB=E6=A9=9F=E9=96=98=E5=8F=A3=E5=B0=87=E6=BA=96=E6=99=82=E6=96=
+=BC=E8=B5=B7=E9=A3=9B=E5=89=8D<strong>20</strong>=E5=88=86=E9=90=98=E9=97=
+=9C=E9=96=89=EF=BC=8C=E8=AB=8B=E6=97=85=E5=AE=A2=E6=96=BC=E8=88=AA=E7=8F=AD=
+=E8=B5=B7=E9=A3=9B=E5=89=8D=E8=87=B3=E5=B0=91<strong>40</strong>=E5=88=86=
+=E9=90=98=E5=88=B0=E9=81=94=E9=96=98=E5=8F=A3=EF=BC=8C=E4=BB=A5=E5=85=8D=E9=
+=8C=AF=E9=81=8E=E8=88=AA=E7=8F=AD=E3=80=82
+					</span>
+					<table>
+						<tbody>
+							<tr>
+								<td height=3D"15"></td>
+							</tr>
+							<tr>
+								<td>
+									<p style=3D"margin: 0;">
+										<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3D=
+u001.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo8jmWIMa63PSJnkjTuTl0ouaiFR_T=
+j27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3l=
+rfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCq=
+Iom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe58rav8oce=
+YT00AaP6-2BTMaJnzEJwxiYKHkNwLnlIteVk2RP2ohuNDrmBweb9YTQ2M33ZtGaYpc5Mw64ZTId=
+lkbMkW-2FU0H8PMDRvnt17Uk3gtwg7GZtfm0foNzIG7Q0n07NTnE7fptwTlDrk-2B3zx16WI-3D=
+"
+											style=3D"color: #21B9DA; text-decoration:none; font-size: 14px;"=
+><span
+												class=3D"link__internal__txt"
+												style=3D"color:#50bef0;text-decoration:none; font-weight: 600;"=
+>=E4=BA=86=E8=A7=A3=E6=9B=B4=E5=A4=9A<span
+													style=3D"font-size: 20px; font-weight: 300">&nbsp;
+													&#8250;</span></span></a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td height=3D"19"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td class=3D"c-space" style=3D"width:26px">&nbsp;</td>
+</tr>
+
+</table>
+
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%"
+style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+<tr>
+	<td>
+		<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&nbsp;</p>
+		<table class=3D"download-banner" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0" width=3D"100%"
+			style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto;">
+			<tr>
+				<td class=3D"download-banner__banner">
+					<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3Du001.=
+XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2Fg4LccUMX9fGLQ-2FsfO93yfyZbQEcU=
+SRgXOOkaAzBEI-2BpYqIHJFoIeFyMkpIYhmRpG3whws9U4tMRpdRhFflLj9ie28zbp2089Nds4q=
+6GzirJMf5FRzCrXegpWTOpMYkggBDbs4BMHcsev-2FpVX8XWapmif07jwlzQ9w8yBO9aoGNQ-3D=
+-3DgOWe_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPO=
+EdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrk=
+wuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe=
+yf-2F-2FAD8Zy89uPb-2BViubivnkbK3Fihs4fkmQXIOhMSQAF51uVZkgYAnoULTuk7rW5gLbS7=
+8lhu4ruew6VpCUUxrK4B9c5jfr7PM-2BPvm3WyYR9LWq5C8y8zQPsLyRG3uiWQuITsFldnIQvhl=
+f65Ar8Ec-3D"
+						target=3D"_blank"><img style=3D"height:auto;"
+							src=3D"https://edge.hkexpress.com/static/HKE-newsletters/imgs/mobile=
+-app-banner/ZH-HK.png"
+							width=3D"100%" alt=3D"Download the App & travel with ease">
+					</a>
+				</td>
+			</tr>
+
+			<tr>
+				<td class=3D"r-space" style=3D"height:24px"></td>
+			</tr>
+
+			<tr>
+				<td class=3D"download-banner__download-btns" style=3D"text-align:center=
+">
+					<a border=3D"0" href=3D"http://links.yourbooking.hkexpress.com/ls/clic=
+k?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY3-2F0O2Cwq4AIosqtzYGfIzDVohWotxYCcWTYFd-2=
+BKAKF09VFv6IAZPtBMMKkuEb8-2BJA-3D-3Dg1jl_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHP=
+m6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs=
+79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgyb=
+YXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe2Z3ignXsuL8v2FcMkZLQBdAHwjo-2BrJjH7CYVNB3o=
+GLvCp9EjPaJaKgbppONhy6JIXg9gmyIFYhv9gprOY6swXSLrQw1mmW52clse89c7R9YPjg7Xb-2=
+BZVfz8C39qzfVUgb2IMQBjKzRn3oBWacSJFtA-3D"
+						style=3D"color:#50bef0;text-decoration:none">
+						<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/imgs/do=
+wnload_apple.png"
+							title=3D"Available on the App Store" width=3D"170" height=3D"50"
+							style=3D"display:inline-block;padding:0 5px">
+					</a>&nbsp;&nbsp;
+					<a border=3D"0" href=3D"http://links.yourbooking.hkexpress.com/ls/clic=
+k?upn=3Du001.XSTVY9SsMUFvRR9BTTWIY-2BoZOS7cgamJ0CCcenDl50Sl9eJCjnuELY9AMZEt=
+jpY-2BzO6vYPNWPu0dfosiGJkTGIka5rp-2BmEW-2BoK1J9uPK13g-3Dn0P3_Tj27qEYzp-2F2o=
+8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZ=
+CCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHs=
+Ykr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSew-2BKqF0n1KjN14m4HP1VS=
+z9aJ0ESPm9pOTf3LxXU4olC3lHHt33gXWP64jxiVodvLQwb7LiO-2FMoFc6bB-2B9idUJwmNxvR=
+vQjxm8J6YW5OSveEF4wUZuKEk7ldYUnjduMTo5gas2YL8ekcDadVOmkFzyE-3D"
+						style=3D"color:#50bef0;text-decoration:none">
+						<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/imgs/do=
+wnload_google.png"
+							title=3D"Available on the Play Store" width=3D"170" height=3D"50"
+							style=3D"display:inline-block;padding:0 5px">
+					</a>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td height=3D"30"></td>
+</tr>
+</table>
+
+<table class=3D"legal-text" style=3D"background-color: #F3F3F3; margin: 0; =
+padding: 0; width: 100%;">
+<tbody style=3D"margin: 0; padding: 0;">
+	<tr>
+		<td height=3D"20">&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr style=3D"margin: 0; padding: 0;">
+		<td width=3D"30" style=3D"margin: 0; padding: 0;"></td>
+		<td style=3D"vertical-align: middle; margin: 0; padding: 0;">
+			<p
+				style=3D"margin: 0; padding: 0; color: #151E3B; font-size: 10px; line-h=
+eight: 12px; font-weight: ">
+				The content of this e-mail is considered confidential and is intended
+				solely for the addressee(s) and access by anyone else is unauthorized.
+				Disclosure, copying or distribution, in whole or part of this message,
+				or taking any action based on it, is strictly prohibited. The views
+				expressed in this e-mail are not necessarily the views of the Company,
+				or any associated company, except where explicitly stated.
+			</p>
+		</td>
+		<td width=3D"30"></td>
+	</tr>
+	<tr>
+		<td height=3D"20">&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</tbody>
+</table>
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" clas=
+s=3D"hk-footer"
+style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto; background-color: #=
+702B91">
+<tr>
+	<td class=3D"center" align=3D"center" valign=3D"top">
+		<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" al=
+ign=3D"center"
+			class=3D"container float-center"
+			style=3D"background: #702B91; font-family:'Noto Sans',sans-serif,Arial,N=
+oto; margin:0; text-align: center; width:100%;">
+			<tr>
+				<td class=3D"content"
+					style=3D"Margin:0;color:#564f70;font-family:'Noto Sans',sans-serif,Ari=
+al,Noto;font-size:16px;font-weight:400;line-height:1.1;margin:0;padding:0;t=
+ext-align:left">
+					<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%"=
+ class=3D"hk-footer"
+						style=3D"font-family:'Noto Sans',sans-serif,Arial,Noto">
+						<tr>
+							<td height=3D"20"></td>
+						</tr>
+						<tr>
+							<td>
+								<table align=3D"center" style=3D"width: 45%; height: 32px;">
+									<tbody>
+										<tr>
+											<td style=3D"width: 40px; height: 30px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY-2Fv4M2QFdBUQksIopA7G5ux2Y8GW45GxjD4MthhV-2FI-=
+2FJBGc9_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPO=
+EdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrk=
+wuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe=
+8TpB9Bln2MHtB3M7wJIwTuW5JST-2F1VfQTKsL1Aveg4Itpoh8SLITpusLjTLZ9FtlVJtDHG-2B=
+knd0zymLqZIvl0I9G64NhCia1sxfY6KRZ8SIjUavsz6iBSCzMgG4-2F2S66XStG-2BTaGepmvYI=
+xHnl1CbU-3D" target=3D"_blank"
+													class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne;  width: 40px">
+													<img
+														src=3D"https://edge.hkexpress.com/static/HKE-newsletters/soci=
+al_icons/facebook.png"
+														width=3D"28" height=3D"28" title=3D"Facebook"></a>
+											</td>
+											<td style=3D"width: 40px; height: 30px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY6vUdRK4aWgkyhhXH5d19KBPmpRRHwPkaRPIWoS8Ncn2tHR=
+1_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5=
+Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCw=
+yCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe0FSDWO=
+lqA-2Fd9KsRHRaJ479QMVwpiRPYArZyD3VhJqDV0m3aHFXPwBwUNFycD-2FHxdEDQoSd1tiJhNQ=
+4-2Bgx1U7rPwfloJYMeLx0Cvn-2FLt9Ds0oxHBVJsZ8Ga-2BuaiY0z35APsViOfM9w7NqaZVEBq=
+17JY-3D" target=3D"_blank"
+													class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne;  width: 40px">
+													<img
+														src=3D"https://edge.hkexpress.com/static/HKE-newsletters/soci=
+al_icons/instagram.png"
+														width=3D"28" height=3D"28" title=3D"Instagram"></a>
+											</td>
+											<td style=3D"width: 40px; height: 30px;"> <a href=3D"http://link=
+s.yourbooking.hkexpress.com/ls/click?upn=3Du001.-2BMXDn1-2BQgXLRxWQoAVhS2T0=
+bAv7bKsM2GM2rtBRzroU1IOunJzpH9H51x8C98XG9eff4_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs=
+6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDd=
+y-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3=
+dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2Fj-2FOxR952sJsaXt35iwSfq-2F-2FYsxMB=
+fgbD5Wx0-2Fxf9JfW16qNkM03nGQpxg8Ieh7h-2Fi33H1aksK1LyIfoEtif4VgkPYbtY-2Bsbg1=
+UJtM8Nc9lwSmwgVqiPpaZ6-2F5OyeQ-2Fx1GvJZadhMofGEf3nSWRFY8-3D"
+													target=3D"_blank" class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne; width: 40px">
+													<img src=3D"https://edge.hkexpress.com/static/HKE-newsletters/=
+social_icons/weibo.png"
+														width=3D"28" height=3D"28" title=3D"Weibo"></a>
+											</td>
+											<td style=3D"width: 40px; height: 30px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIY2k3YZuQa2-2BXOJDbrS8P0eUzCykMi1w1Ffr8n8Wx2adeF=
+1gimUUVjWtClaaEqAcCkg-3D-3D1qH__Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urg=
+ngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudW=
+iTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa=
+1CeKnHIBl2IQQLAI4j2GyRSeycNshdrHlJQMWcjRCuDRPL50-2Fe2qdwkcg-2BW6rVHwIhlZUk-=
+2BMwd3zbLJkQ46kACi1ZLoNkZiMGBZ-2Bb559h3doYco82-2Bkh-2Bjbth3WEsV8H0ZsLwM5495=
+zMqe3NaJqWK2Ys3-2FQRQLF0G7zFEA9rVudspI-3D" target=3D"_blank"
+													class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne; width: 40px">
+													<img
+														src=3D"https://edge.hkexpress.com/static/HKE-newsletters/soci=
+al_icons/wechat.png"
+														width=3D"28" height=3D"28" title=3D"Wechat"></a>
+											</td>
+											<td style=3D"width: 40px; height: 30px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIYyPqd23JQLrOcRVClfxVUvu96oDQSpmdpE2pBqS5NQhQMXr=
+jWHcbjMMo5-2FjdyX4Q4TPeC0v1m8XOtE-2Bk5JLuO80-3DgS10_Tj27qEYzp-2F2o8TAQfd7ee=
+Z1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZI=
+jumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAI=
+mUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2B15v-2FZxrFgM3fcIUMZnNyDp0-2B=
+VP1XnTGSKnyOJ-2F2S63hBuxf4US34dLXpkBNuu6kaS66PNF4b5VPh1NDP0n-2FsTiwXrNmZFak=
+zfcuKETRcu6iRmaf9xDxjwwWpevk-2Bs2YWZHMDwuQyHYx7UzMIP4K3k-3D"
+													target=3D"_blank" class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne; width: 40px">
+													<img
+														src=3D"https://edge.hkexpress.com/static/HKE-newsletters/soci=
+al_icons/youtube.png"
+														width=3D"28" height=3D"28" title=3D"Youtube"></a>
+											</td>
+											<td style=3D"width: 40px; height: 30px;">
+												<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=
+=3Du001.XSTVY9SsMUFvRR9BTTWIYyIpVPB-2F0ZoTt3WQexX78Ng-2BwQHqczlwcYdu4P19y0a=
+YX5jqLIsatkajHuyrQ9n5PkeHbrfJFPTQpqzLwHFMGdI-3D5_1Q_Tj27qEYzp-2F2o8TAQfd7ee=
+Z1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZI=
+jumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAI=
+mUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSewOc-2BIB-2BiiVIc9YNnWj8mwsw2oVL=
+dE6YaIQQ9Eio8c57ase4hV0AE6jbIOm0kllCvw058yjRTPS7pUft9uEjgg45qYCqLfycjIUUWdc=
+xQXy7lilbIvHKo8ZL8XG1bTAF3u917v3Ys1KDkoEAeGHLWIk-3D"
+													target=3D"_blank" class=3D"footer__icons__item" border=3D"0"
+													style=3D"color:#50bef0;display:inline-block;text-decoration:no=
+ne; width: 40px">
+													<img
+														src=3D"https://edge.hkexpress.com/static/HKE-newsletters/soci=
+al_icons/linkedin.png"
+														width=3D"28" height=3D"28" title=3D"Linkedin"></a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td class=3D"footer__links" style=3D"font-size:19px;text-align:cente=
+r">
+								<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3Du0=
+01.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo-2FzB4r-2F17FumEs-2BDEga4eLgoh=
+I-2BieFUaTPaOgZm2xNL2dzvdCJuNWb0cY-2FTCRlsmDw-3DXWSm_Tj27qEYzp-2F2o8TAQfd7e=
+eZ1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZ=
+IjumuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKA=
+ImUx8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSe-2BJSPAOJ4NgoaQsgVPUtC2OXZlwG-=
+2Bt7N5ClEz8AUvMd5-2Frj-2FQd755UPfcOoOGDLLrTa2jRn4GAey6sMkhUWAnbJbFWIR0xcbZK=
+awzX29EeZAPKrX9SeF1qCbylUd-2FLqo6RmkXO2011Gp9WlNUCDGuas-3D"
+									target=3D"_blank" style=3D"color:#564f70;text-decoration:none"><sp=
+an
+										class=3D"link__internal__txt"
+										style=3D"color: #21B9DA; text-decoration:none; font-size: 14px; l=
+ine-height: 17px; font-weight: 500">=E8=81=AF=E7=B5=A1=E6=88=91=E5=80=91</s=
+pan></a>
+								<span class=3D"footer__links__separator"
+									style=3D"color: #fff;font-weight:500;padding:0 5px; font-size: 14p=
+x">&#8226;</span>
+								<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3Du0=
+01.XSTVY9SsMUFvRR9BTTWIY1xZqvoxOh7Gqf1xwuqTxo8gEEE-2Frzc-2FRgtV9aO5YjcCKp99=
+Sj8QP5CCLT-2FlN0kqQ0MFF9x09-2BMU2E5D0jQO6yI-3DfJS3_Tj27qEYzp-2F2o8TAQfd7eeZ=
+1XRrs6eiHPm6l1Q4urgngjYbLoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIj=
+umuDdy-2Fs79cYHLudWiTDWPs2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAIm=
+Ux8b3dLgybYXKyjKCpa1CeKnHIBl2IQQLAI4j2GyRSex4b2mGmujFl9TsB-2BIi-2B8mA1y-2Br=
+5Nz4czaO219ieIVicd1i9vkduldBiebOEGdPTOY5NCmoqMlTkzayeI7O5IGsolaOHaxqc6vV2e9=
+XahAAeQk8632VLzKiz8uo8GAt0840CSJz0a-2B7XSwIUCAqhimI-3D"
+									target=3D"_blank" style=3D"color:#564f70;text-decoration:none"><sp=
+an
+										class=3D"link__internal__txt"
+										style=3D"color: #21B9DA; text-decoration:none; font-size: 14px; l=
+ine-height: 17px; font-weight: 500">=E7=A7=81=E9=9A=B1=E6=94=BF=E7=AD=96</s=
+pan></a>
+							</td>
+						</tr>
+						<tr>
+							<td class=3D"footer__text text" style=3D"color:#fff;font-size: 10px;=
+text-align:center">
+								<p style=3D"Margin:7px 0 7px 0;margin:7px 0 7px 0">&copy;
+									2025 Hong Kong Express Airways Limited</p>
+							</td>
+						</tr>
+						<tr>
+							<td height=3D"20"></td>
+						</tr>
+						<!--
+						<tr>
+							<td>
+								<a href=3D"http://links.yourbooking.hkexpress.com/ls/click?upn=3Du0=
+01.XSTVY9SsMUFvRR9BTTWIY4egvVHdbjXvDhl5epfAkhtCLx1cXpoj7f0-2BXcq8TaCf5Ubxqz=
+UIHej1cXI2kn0trw-3D-3DPLnq_Tj27qEYzp-2F2o8TAQfd7eeZ1XRrs6eiHPm6l1Q4urgngjYb=
+LoSNFoPfOdUmJvMgQPOEdsWp5Z3lrfOUJMR8lxjhZCCwqKtVZIjumuDdy-2Fs79cYHLudWiTDWP=
+s2a4YiNOpDwgglPChrkwuOKCwyCqIom0j6UGtxyHsYkr9bKKAImUx8b3dLgybYXKyjKCpa1CeKn=
+HIBl2IQQLAI4j2GyRSe6uRN-2BTlh-2FKAdIf8NY6uIY2pqJywdMkpgJPwiurAHAPj4P2KkY49B=
+bknPnUNUt73Q51N7H-2FofIMnq9CW0VAYVIxnqyTowv1-2BHdFVy5fv3adaElKzjSutANgjQhg6=
+jWUaxG2K8DQQfS4EgFoNuS80SIs-3D" target=3D"_blank"><img src=3D"https://edge.=
+hkexpress.com/static/assets/imgs/banner-itinerary/mydoc-promo-banner/mydoc-=
+promo_itin-email-banner_TC.jpg" alt=3D"Mydoc Video consultation" width=3D"1=
+00%" style=3D"width: 100%">
+								</a>
+							</td>
+						</tr>
+						!-->
+							<!--!-->
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+</td>
+</tr>
+</table>
+<!-- prevent Gmail on iOS font size manipulation -->
+<div style=3D"display:none;white-space:nowrap;font:15px courier;color:#fff"=
+>
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</div>
+<img src=3D"http://links.yourbooking.hkexpress.com/wf/open?upn=3Du001.qfmTr=
+rsvfu7L7MdyQdwabYSV0AZDL459qoUMqaSNpZdEiGQ2CjzYoOrV17eUmIrtkpmoHpfjzkPwa9BW=
+-2Fy7eqNH2A9jJ528jTnPK3f4EQuKurw2TMNSnqeIoa37BgTWivZR8H031n8ZUe-2FtRneJAfJ2=
+xiu5bTKoaGFGhRXVjEJW0sV-2BI-2F9wSj1osMgncn-2BEziyI1iG6-2BK7Fq6kVsB4UN9BUn7p=
+5sIEhy2IRhmH25rn68mzATRbolJ48DYnTifbjYeaIXvv3trLaWGIg6pjL81VTJkCinMLsKAwXx-=
+2FvAXpfQ01kyTFWQx2dc5RePTAVfeDJIdgeanGY4uzlQ3EQe7ekp6x24Lis7Hg25Hw5zw9OU-3D=
+" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !impor=
+tant;width:1px !important;border-width:0 !important;margin-top:0 !important=
+;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !import=
+ant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !i=
+mportant;padding-left:0 !important;"/></body>
+
+</html>
+--7d44ae2edb901b7d8a6c6bf16cf9a05108713ad8c58d0b19cce75fd87189--

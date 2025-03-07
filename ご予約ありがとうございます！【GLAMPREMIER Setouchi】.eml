@@ -1,0 +1,203 @@
+Delivered-To: wingyiu1985@gmail.com
+Received: by 2002:a05:7208:b002:b0:95:45b1:11ba with SMTP id z2csp5315411rba;
+        Sat, 18 Jan 2025 06:39:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHfj2Ly3ZrerCnO0RrpukPGpbDgnnKRgxE9p6q0BeZv3kCX2mGeUDsXE6Ovm2jenasLKbRh
+X-Received: by 2002:a17:90b:1f92:b0:2ee:8427:4b02 with SMTP id 98e67ed59e1d1-2f782d4ee70mr9670398a91.28.1737211166702;
+        Sat, 18 Jan 2025 06:39:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737211166; cv=none;
+        d=google.com; s=arc-20240605;
+        b=CuBFlZfvFNj/mdJlXPEsW31+KB80XBhKH2pHlrAJ85C15oo+Mq1GWBYdDje3I6IRpr
+         8HcB12MvQv1XHq+2CTOAEYaCOQT/XnYvCdvoGHwHH8SGWpR4+UDXqzvbBmjy/7gv6BxY
+         Jc7Ng/JRecECnh5fBg99Lc8jpKHfz8QfH5cGxGMZ1Ar1UrnlKZVxMmBt7bTmXEsIiEmm
+         v7WR1YXbJT5Gp+c9F5bjLKX2gt6XxmVX89DSmeKuQlxu3N6pmMgPPBR6oqj687wBoO79
+         rr3YKTryJ6SePBT4aCBsxJcDJW8ltohBsEBa7w+9OC/7LLF4aPz+84g8o31ZPTlbrbJJ
+         v/Ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:date:mime-version:message-id:reply-to
+         :subject:to:from:dkim-signature;
+        bh=MeAGCJwWUcZA59cbRe7xQxiTt2c0T6Zv9n3p72F+vt4=;
+        fh=c7SUX9TUFk4LxrmZwrdh+vZKrL47bTWN9TfDp7bU0m0=;
+        b=QC7DeM8tfTim+ch6cRW1G3D6F2nycJmbGV7VMEy8yfdRx3BmZY8hmVHJH7piuNW4UZ
+         mjyzN8mkLbD8xYiLXiMjfFVczBYLsMOTYxObl5WvRTWCT2yU5v2BWUt5zMc4iNfh2V32
+         wdSo7HjZ237B1dL6/kInbqQgNmyCV8ewuAcmpLn6Bxgv9QAnuhfDWaBBB9EI89sxkoq4
+         H+FAucoi+PQbTgF2er7KJxVR0X/3HlpYFgTUJR4w6AmHpmQnmb5F1abpVMDRRiydFdfX
+         nVIn3AarPXSVRQTPzqAgYlMYKHEh3+OfxB/qdfaNkxVYOFPfid+hY65oLdrlLFgK5GDR
+         BwYw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@489ban.net header.s=reserve20240711 header.b=VjTaaUh4;
+       spf=pass (google.com: domain of failure@489ban.net designates 153.127.211.142 as permitted sender) smtp.mailfrom=failure@489ban.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=489ban.net
+Return-Path: <failure@489ban.net>
+Received: from reserve.489ban.net (web5i.489ban.net. [153.127.211.142])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2f77629bd26si5426158a91.131.2025.01.18.06.39.26
+        for <wingyiu1985@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Jan 2025 06:39:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of failure@489ban.net designates 153.127.211.142 as permitted sender) client-ip=153.127.211.142;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@489ban.net header.s=reserve20240711 header.b=VjTaaUh4;
+       spf=pass (google.com: domain of failure@489ban.net designates 153.127.211.142 as permitted sender) smtp.mailfrom=failure@489ban.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=489ban.net
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	by reserve.489ban.net (Postfix) with ESMTP id C99581A0229
+	for <wingyiu1985@gmail.com>; Sat, 18 Jan 2025 23:39:24 +0900 (JST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=489ban.net;
+	s=reserve20240711; t=1737211164;
+	bh=MeAGCJwWUcZA59cbRe7xQxiTt2c0T6Zv9n3p72F+vt4=;
+	h=From:To:Subject:Reply-To:Date:From;
+	b=VjTaaUh4J2AQwrG4ZJamj2AkDiHRybMIXqa+OXsHp4vb0VBV9X2/BSzTyHhffXm6q
+	 Tow8WNnVZd6/mMjWBYTQYclZ8LsW9ZazURLNfX8DvhK/mhxPLRsdhIipVdNtgVVhW1
+	 TGzm5C+LvH0T0vb/Uq4zBoWZObTbawoGC2H46fsftYW3VVdR5v13Xksd4mcYuzwqAp
+	 UKFZZk3spKb1/oxdvvRSSoWNcXmqZVR4IB1CTlLDTi9sR6hcuASMEtc4ckujZxdUU9
+	 aJHLfL6RMw6aJITzvSJhA0T58nLpM20lNTALuUYITulKN3uvZjm2GyuWDCslms5kOQ
+	 d6U68zjNtqKDA==
+From: GLAMPREMIER Setouchi <notify@489ban.net>
+To: Cheung Wing Yiu =?utf-8?Q?=E6=A7=98?= <wingyiu1985@gmail.com>
+Subject: =?utf-8?Q?=E3=81=94=E4=BA=88=E7=B4=84=E3=81=82?=
+ =?utf-8?Q?=E3=82=8A=E3=81=8C=E3=81=A8=E3=81=86?=
+ =?utf-8?Q?=E3=81=94=E3=81=96=E3=81=84=E3=81=BE?=
+ =?utf-8?Q?=E3=81=99=EF=BC=81=E3=80=90GLAMPREMIER_Setouchi=E3=80=91?=
+Reply-To: GLAMPREMIER Setouchi <glampremier.setouchi@gmail.com>
+Message-ID: <dc788ddec3d92a3a9168a0ac1c4728af@489ban.net>
+MIME-Version: 1.0
+Date: Sat, 18 Jan 2025 23:39:24 +0900
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Cheung Wing Yiu=E6=A7=98
+
+=E3=81=93=E3=81=AE=E5=BA=A6=E3=81=AF=E3=80=81=E6=95=B0=E3=81=82=E3=82=8B=
+=E5=AE=BF=E6=B3=8A=E6=96=BD=E8=A8=AD=E3=81=8B=E3=82=89=E3=80=81
+=E5=BD=93=E9=A4=A8=E3=82=92=E3=81=8A=E9=81=B8=E3=81=B3=E3=81=84=E3=81=9F=
+=E3=81=A0=E3=81=8D=E8=AA=A0=E3=81=AB=E3=81=82=E3=82=8A=E3=81=8C=E3=81=A8=
+=E3=81=86=E3=81=94=E3=81=96=E3=81=84=E3=81=BE=E3=81=99=E3=80=82
+
+
+=E4=BB=A5=E4=B8=8B=E3=81=AE=E9=80=9A=E3=82=8A=E3=81=94=E4=BA=88=E7=B4=84=
+=E3=82=92=E6=89=BF=E3=82=8A=E3=81=BE=E3=81=97=E3=81=9F=E3=81=AE=E3=81=A7=
+=E3=80=81=E3=81=94=E7=A2=BA=E8=AA=8D=E3=81=8F=E3=81=A0=E3=81=95=E3=81=84=
+=E3=81=BE=E3=81=9B=E3=80=82
+
+[=E6=96=BD=E8=A8=AD=E5=90=8D]:GLAMPREMIER Setouchi
+[=E4=BA=88=E7=B4=84=
+=E7=95=AA=E5=8F=B7]:5386 (=E4=BA=88=E7=B4=84=E5=8F=97=E4=BB=98=E6=97=A5=
+=E6=99=82:2025/01/18 23:39:24)
+[=E3=83=97=E3=83=A9=E3=83=B3]:Top-grade BB=
+Q=E3=83=97=E3=83=A9=E3=83=B3=E3=80=8E=E6=97=AC=E3=81=AE=E9=AE=AE=E9=AD=
+=9A=E3=81=AE=E3=81=8A=E9=80=A0=E3=82=8A=E3=80=8F+=E3=80=8E=E3=81=82=
+=E3=82=8F=E3=81=B3=E3=81=AE=E8=82=9D=E3=83=90=E3=82=BF=E3=83=BC=E7=84=BC=
+=E3=81=8D=E3=80=8F
+[=E3=81=8A=E9=83=A8=E5=B1=8B]:Setouchi Dome Tent=
+=EF=BC=88=E3=83=9A=E3=83=83=E3=83=88=E4=B8=8D=E5=8F=AF=EF=BC=89
+[=
+=E3=81=8A=E9=A3=9F=E4=BA=8B]:=E6=9C=9D=E5=A4=95=E9=A3=9F=E4=BB=98
+[=
+=E5=AE=BF=E6=B3=8A=E6=97=A5]:2025/03/15(=E5=9C=9F)=E3=81=8B=E3=82=891=
+=E6=B3=8A
+[=E9=83=A8=E5=B1=8B=E6=95=B0]:2=E5=AE=A4
+=E2=96=BC=E3=81=
+=8A=E9=83=A8=E5=B1=8B=E5=89=B2=E3=82=8A=E3=80=80=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=E3=80=801=E9=83=A8=E5=B1=8B=E7=9B=
+=AE
+=E3=80=80=E3=80=80=E7=94=B7=E6=80=A7:4=E5=90=8D
+=E3=80=802=E9=83=
+=A8=E5=B1=8B=E7=9B=AE
+=E3=80=80=E3=80=80=E5=A5=B3=E6=80=A7:4=E5=90=8D
+=
+
+=E2=96=BC=E4=BA=88=E7=B4=84=E8=80=85=E5=9F=BA=E6=9C=AC=E6=83=85=E5=A0=
+=B1=E3=80=80=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+[=E6=B0=
+=8F=E5=90=8D]:Cheung Wing Yiu(=E3=81=8D=E3=82=80=E3=82=89 =E3=81=9F=
+=E3=81=8F=E3=82=84)=E6=A7=98=20
+[=E3=83=A1=E3=83=BC=E3=83=AB=E3=82=A2=
+=E3=83=89=E3=83=AC=E3=82=B9]:wingyiu1985@gmail.com
+[=E3=81=8A=E6=94=AF=
+=E6=89=95=E6=96=B9=E6=B3=95]:=E7=8F=BE=E5=9C=B0=E6=B1=BA=E6=B8=88
+[=
+=E3=83=81=E3=82=A7=E3=83=83=E3=82=AF=E3=82=A4=E3=83=B3=E4=BA=88=E5=AE=9A=
+=E6=99=82=E9=96=93]:14:30=20
+
+=E2=96=BC=E3=81=94=E5=AE=BF=E6=B3=8A=
+=E6=96=99=E9=87=91=E3=80=80=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+
+1=E6=B3=8A=E7=9B=AE 2025/03/15=20
+=E3=80=801=E9=83=A8=E5=B1=8B=E7=9B=
+=AE
+=E3=80=80=E3=80=80=E7=94=B7=E6=80=A7
+=E3=80=80=E3=80=80=E3=80=8026,=
+750=E5=86=86 =C3=97 4 =3D 107,000=E5=86=86
+=E3=80=802=E9=83=A8=E5=B1=
+=8B=E7=9B=AE
+=E3=80=80=E3=80=80=E5=A5=B3=E6=80=A7
+=E3=80=80=E3=80=80=
+=E3=80=8026,750=E5=86=86 =C3=97 4 =3D 107,000=E5=86=86
+------------------=
+----------------------------------------
+=E5=B0=8F=E8=A8=88:214,000=
+=E5=86=86
+=E3=82=B5=E3=83=BC=E3=83=93=E3=82=B9=E6=96=99:=E8=BE=BC=
+=E3=81=BF
+=E5=85=A5=E6=B9=AF=E7=A8=8E:=E8=BE=BC=E3=81=BF
+
+=E5=90=
+=88=E8=A8=88:214,000=E5=86=86
+
+=E2=96=BC=E3=81=94=E4=BA=88=E7=B4=84=
+=E3=82=92=E7=A2=BA=E8=AA=8D=E3=83=BB=E5=A4=89=E6=9B=B4=E3=83=BB=E3=82=AD=
+=E3=83=A3=E3=83=B3=E3=82=BB=E3=83=AB=E3=81=95=E3=82=8C=E3=82=8B=E5=A0=B4=
+=E5=90=88=E3=81=AF=E3=81=93=E3=81=A1=E3=82=89
+https://reserve.489ban.net/=
+client/glampremier-setouchi/0/booked/login?reserve_no=3D5386
+
+
+
+=E3=81=BE=E3=81=9F=E3=80=81=E4=BB=A5=E4=B8=8B=E3=81=AE=E3=82=AD=E3=83=A3=
+=E3=83=B3=E3=82=BB=E3=83=AB=E8=A6=8F=E5=AE=9A=E3=81=8C=E3=81=94=E3=81=96=
+=E3=81=84=E3=81=BE=E3=81=99=E3=81=AE=E3=81=A7=E3=81=94=E4=BA=86=E6=89=BF=
+=E3=81=8F=E3=81=A0=E3=81=95=E3=81=84=E3=80=82
+
+=E9=9B=A8=E5=A4=A9=E3=81=AA=E3=81=A9=E3=82=92=E7=90=86=E7=94=B1=E3=81=A8=
+=E3=81=97=E3=81=9F=E3=82=AD=E3=83=A3=E3=83=B3=E3=82=BB=E3=83=AB=E3=81=AE=
+=E5=A0=B4=E5=90=88=E3=82=82=E3=80=81=E3=82=AD=E3=83=A3=E3=83=B3=E3=82=BB=
+=E3=83=AB=E6=96=99=E9=87=91=E3=81=AE=E6=B8=9B=E5=85=8D=E3=81=AF=E5=87=BA=
+=E6=9D=A5=E3=81=8B=E3=81=AD=E3=81=BE=E3=81=99=E3=80=82=E3=81=94=E4=BA=86=
+=E6=89=BF=E3=81=8F=E3=81=A0=E3=81=95=E3=81=84=E3=81=BE=E3=81=9B=E3=80=82
+
+=E3=81=9F=E3=81=A0=E3=81=97=E3=80=81=E5=A4=A7=E5=9E=8B=E3=81=AE=E5=8F=B0=
+=E9=A2=A8=E3=81=8C=E5=88=B0=E6=9D=A5=E4=BA=88=E5=AE=9A=E3=81=A7=E3=81=82=
+=E3=82=8B=E3=81=AA=E3=81=A9=E3=80=81=E5=AE=89=E5=85=A8=E3=81=AB=E3=81=8A=
+=E6=B3=8A=E3=81=BE=E3=82=8A=E3=81=84=E3=81=9F=E3=81=A0=E3=81=8F=E3=81=93=
+=E3=81=A8=E3=81=8C=E9=9B=A3=E3=81=97=E3=81=84=E3=81=A8=E5=BC=8A=E7=A4=BE=
+=E3=81=8C=E5=88=A4=E6=96=AD=E3=81=97=E3=81=9F=E5=A0=B4=E5=90=88=E3=81=AB=
+=E3=81=AF=E3=82=AD=E3=83=A3=E3=83=B3=E3=82=BB=E3=83=AB=E6=96=99=E9=87=91=
+=E3=82=92=E3=81=8A=E6=94=AF=E6=89=95=E3=81=84=E3=81=9F=E3=81=A0=E3=81=8F=
+=E5=BF=85=E8=A6=81=E3=81=AF=E3=81=94=E3=81=96=E3=81=84=E3=81=BE=E3=81=9B=
+=E3=82=93=E3=80=82
+
+
+=E3=81=9D=E3=82=8C=E3=81=A7=E3=81=AF=E3=80=81Cheung Wing Yiu=E6=A7=98=
+=E3=81=AE=E3=81=94=E5=AE=BF=E6=B3=8A=E3=82=92=E5=BE=93=E6=A5=AD=E5=93=A1=
+=E4=B8=80=E5=90=8C=E3=81=93=E3=81=93=E3=82=8D=E3=82=88=E3=82=8A=E3=81=8A=
+=E5=BE=85=E3=81=A1=E3=81=97=E3=81=A6=E3=81=8A=E3=82=8A=E3=81=BE=E3=81=99=
+=E3=80=82
+
+=E4=BB=8A=E5=BE=8C=E3=81=A8=E3=82=82=E3=80=81=E4=BD=95=E5=8D=92=E3=82=88=
+=E3=82=8D=E3=81=97=E3=81=8F=E3=81=8A=E9=A1=98=E3=81=84=E3=81=84=E3=81=9F=
+=E3=81=97=E3=81=BE=E3=81=99=E3=80=82
+
+
+=E2=80=A8=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=E4=BD=8F=E6=89=80=EF=BC=9A=E3=80=92768-0062=C2=A0 =E9=A6=99=E5=B7=9D=
+=E7=9C=8C=E8=A6=B3=E9=9F=B3=E5=AF=BA=E5=B8=82=E6=9C=89=E6=98=8E=E7=94=BA=
+=EF=BC=96=E7=95=AA10=E5=8F=B7
+=E9=9B=BB=E8=A9=B1=E7=95=AA=E5=8F=B7 : 0875-23-7400
+FAX : 0875-23-7405
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D

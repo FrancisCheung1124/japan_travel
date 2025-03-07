@@ -1,0 +1,142 @@
+Delivered-To: wingyiu1985@gmail.com
+Received: by 2002:a05:7208:31cf:b0:95:45b1:11ba with SMTP id v15csp1888641rbd;
+        Wed, 19 Feb 2025 20:08:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHuYxzBhlFExELNJkEPp5k8DdLTL/qzWAPmptvzG5Oc7hprNJSIJ9R+OGx8Tl+Xuky7cYa3
+X-Received: by 2002:a05:6a21:6daa:b0:1ee:d418:f752 with SMTP id adf61e73a8af0-1eed418f8d1mr10644898637.27.1740024530025;
+        Wed, 19 Feb 2025 20:08:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740024530; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HUk3SUtfbNcc9xASdDbRybIfpA3BKeP4RVQTJXdi0SkNAzn0p69UDoAXsR5+boPYky
+         EuXXz9geIsdsTD5ene5/3pLzkRw6Dzmju+t0FfHtaK6T4xO8N9jSlL9mRKA0xejh/8/e
+         rIQfKJFSucTBTHTFlK1ZkSirratgDsSyXevaLB5YBZTUBnpT34lmQJhr1d0TqCr3ancA
+         OGckuCoI19BHuc0q/W7jbgv3frW8wme8E45yLIcmH0kfysR12RxTHb5fyVMiAH/2EOCv
+         CjdRHbnqpSZtDBNDypYi4KA0MW7RrjtPOYwp8ypQmTK7uSeU1iAM60kcezdKVlJseiZt
+         W3ZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:content-transfer-encoding:mime-version:cc:to:reply-to
+         :from:subject:date:message-id:dkim-signature:dkim-signature;
+        bh=lTElBSLL6uUbSZs7pe5/f4YaOz+DmboZz1ufMFsPl0A=;
+        fh=P9/zXsxWSIHRRi1LpU8ak7JygVysim6KVZ/KuzE9hzk=;
+        b=BWCue0hNnBdeq4YzwpjwXxaUI0A/tMusqzmyfhlgzt3rSfmON+KBWJo4OB++FqkNpy
+         +vYOinoVN5Tllthyji+pJDdDMZXo7he13SrsGQypnAj2B99Xz6gdKR393hfWtDiMInOZ
+         cv2+9SSGcEWePOsqjyB4BU4ISVmEamMJ+PwrAY6q/LhD0jk55q9YE1DYJsFYPkLz6AbM
+         Ye+Yj39LgO9FzjPNUC/oA6zu+eluVr7u/yl5Y43aAuFa7ZyAs9PZ017/tWqC863cRPH/
+         AyuZk66C8fyrgXIbBJwrjDhLvIhon0OLoZ2ZxuaBBVve/CqAEV8bPxvDW7Eh7+y2DCQC
+         dALw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@favhospitalitygroup.com header.s=mgfucftgkqetqzftgeddscwyn2gwl4a6 header.b=PAiT6Ffj;
+       dkim=pass header.i=@amazonses.com header.s=wf7ez2pjvcsodozkoqksj277kza7wu47 header.b=B0odzEbT;
+       spf=pass (google.com: domain of 01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com designates 23.251.234.10 as permitted sender) smtp.mailfrom=01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com
+Return-Path: <01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com>
+Received: from e234-10.smtp-out.ap-northeast-1.amazonses.com (e234-10.smtp-out.ap-northeast-1.amazonses.com. [23.251.234.10])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-732793b3f89si13511926b3a.335.2025.02.19.20.08.49
+        for <wingyiu1985@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Feb 2025 20:08:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of 01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com designates 23.251.234.10 as permitted sender) client-ip=23.251.234.10;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@favhospitalitygroup.com header.s=mgfucftgkqetqzftgeddscwyn2gwl4a6 header.b=PAiT6Ffj;
+       dkim=pass header.i=@amazonses.com header.s=wf7ez2pjvcsodozkoqksj277kza7wu47 header.b=B0odzEbT;
+       spf=pass (google.com: domain of 01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com designates 23.251.234.10 as permitted sender) smtp.mailfrom=01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=mgfucftgkqetqzftgeddscwyn2gwl4a6; d=favhospitalitygroup.com;
+	t=1740024529;
+	h=Message-ID:Date:Subject:From:Reply-To:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding;
+	bh=ddHQSRF9hko1wp6sXbRi34GrvrewxTw+YmEZ3pcFvBE=;
+	b=PAiT6FfjcEp62AlUdfPMDzuDeS2tngw8k5gMbMgBQeRn3JaFLbjJMQ+UmeRwY93b
+	DPkbZqz9gJ5glBp/fFVFTA/6C/aFotioaucncoeoOliN2LIegPvxFdszl9rL8YY+eb8
+	cXIKJ7X1lAL+utsw+eQt4gnquy7ZH1CEKi8c10lboybvEyIcPCa6qUCDjbO1MpzVf5z
+	hNmxrXFQPBRa8xlRp1d6RkvrhOJFZjbxdhv6k81UYJlQfEmCojD5otzzQBgI69PtJso
+	zPtuoYE/tJdFcHz5v4TGFTD7J4rhlX3Fa8Ak/E3mFIwkeGevIfrI+kxM8b3Q8rfCgJG
+	8eXet0iukA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=wf7ez2pjvcsodozkoqksj277kza7wu47; d=amazonses.com; t=1740024529;
+	h=Message-ID:Date:Subject:From:Reply-To:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=ddHQSRF9hko1wp6sXbRi34GrvrewxTw+YmEZ3pcFvBE=;
+	b=B0odzEbTIeOsxC4EGmidbfGYPIzsmIdcTjCOdhUQxKsyFlOVnMpDrVTFWB16LBbw
+	AyIal5r4bey7XdAHOegrFTJBbUZiYLkKo67PKYtyrVtPIPz6UBOmKjrxjLMW+E6jES+
+	bhASTgrTJ4vaP88ZJ82pMwwpQXPGhjEb0U/cgxIY=
+Message-ID: <01060195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000@ap-northeast-1.amazonses.com>
+Date: Thu, 20 Feb 2025 04:08:48 +0000
+Subject: =?utf-8?Q?=E3=80=90fav_TAKAMATSU=E3=80=91Pre-Check-In?= Information
+From: =?utf-8?Q?fav=E9=AB=98=E6=9D=BE?= <reservation@favhospitalitygroup.com>
+Reply-To: 
+	=?utf-8?Q?fav=E9=AB=98=E6=9D=BE?= <reservation@favhospitalitygroup.com>
+To: wingyiu1985@gmail.com
+Cc: reservation@favhospitalitygroup.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Feedback-ID: ::1.ap-northeast-1.sAqE1cNukYpKYgPWmSZrfKO4KgijkYWtDo0DQ5awLpg=:AmazonSES
+X-SES-Outgoing: 2025.02.20-23.251.234.10
+
+<!DOCTYPE html>
+<html lang=3D"en-US">
+  <head>
+    <meta charset=3D"utf-8" />
+  </head>
+  <body>
+    <h2></h2>
+    <pre>=E2=80=BB=E3=82=B7=E3=82=B9=E3=83=86=E3=83=A0=E5=88=87=E3=82=8A=E6=
+=9B=BF=E3=81=88=E3=81=AB=E4=BC=B4=E3=81=84=E3=81=94=E9=80=A3=E7=B5=A1=E5=A4=
+=B1=E7=A4=BC=E8=87=B4=E3=81=97=E3=81=BE=E3=81=99=E3=80=82
+Cheung Wing Yiu=E6=A7=98
+
+fav=E9=AB=98=E6=9D=BE=E3=81=AB=E3=81=94=E4=BA=88=E7=B4=84=E3=81=84=E3=81=9F=
+=E3=81=A0=E3=81=8D=E3=81=82=E3=82=8A=E3=81=8C=E3=81=A8=E3=81=86=E3=81=94=E3=
+=81=96=E3=81=84=E3=81=BE=E3=81=99=E3=80=82=EF=BC=88=E4=BA=88=E7=B4=84ID=EF=
+=BC=9A 10132165=EF=BC=89=E2=80=8B
+=E3=83=BB=E3=81=94=E5=AE=BF=E6=B3=8A=E8=80=85=E4=BB=A3=E8=A1=A8=E5=90=8D=EF=
+=BC=9A Cheung Wing Yiu
+=E3=83=BB=E3=81=94=E5=AE=BF=E6=B3=8A=E6=97=A5=EF=BC=9A=E2=80=8B 2025-03-16=
+=E3=80=80=E3=80=9C=E3=80=802025-03-19
+
+=E4=BB=A5=E4=B8=8B=E3=83=AA=E3=83=B3=E3=82=AF=E3=82=88=E3=82=8A=E3=80=81=E3=
+=83=81=E3=82=A7=E3=83=83=E3=82=AF=E3=82=A4=E3=83=B3=E7=94=A8=E3=81=AEQR=E3=
+=82=B3=E3=83=BC=E3=83=89=E3=81=AE=E7=99=BA=E8=A1=8C=E3=82=92=E3=81=8A=E9=A1=
+=98=E3=81=84=E3=81=84=E3=81=9F=E3=81=97=E3=81=BE=E3=81=99=E3=80=82=E2=80=8B
+https://system.fav-hotels.com/guest/reservation_info?rc=3Db131901384cd90f0
+=E3=81=94=E5=AE=BF=E6=B3=8A=E5=BD=93=E6=97=A5=E3=81=AF=E3=83=81=E3=82=A7=E3=
+=83=83=E3=82=AF=E3=82=A4=E3=83=B3=E3=81=AE=E9=9A=9B=E3=81=AB=E3=80=81=E7=99=
+=BA=E8=A1=8C=E3=81=95=E3=82=8C=E3=81=9FQR =E3=82=B3=E3=83=BC=E3=83=89=E3=82=
+=92=E3=81=8A=E6=89=8B=E5=85=83=E3=81=AB=E3=81=94=E7=94=A8=E6=84=8F=E3=81=8F=
+=E3=81=A0=E3=81=95=E3=81=84=E3=80=82=E2=80=8B
+=EF=BC=88=E3=83=AB=E3=83=BC=E3=83=A0=E3=82=AD=E3=83=BC=E3=81=AF=E3=83=81=E3=
+=82=A7=E3=83=83=E3=82=AF=E3=82=A4=E3=83=B3=E6=99=82=E3=81=AB=E7=99=BA=E8=A1=
+=8C=E3=81=95=E3=82=8C=E3=82=8B4=E6=A1=81=E3=81=AE=E6=9A=97=E8=A8=BC=E7=95=
+=AA=E5=8F=B7=E3=81=A8=E3=81=AA=E3=82=8A=E3=81=BE=E3=81=99=EF=BC=89=E3=80=82=
+=E2=80=8B
+
+&lt;=E6=B3=A8=E6=84=8F=E4=BA=8B=E9=A0=85&gt;=E2=80=8B
+=E3=83=BB=E6=9C=AC=E3=83=A1=E3=83=BC=E3=83=AB=E3=81=AF=E9=80=81=E4=BF=A1=E5=
+=B0=82=E7=94=A8=E3=81=A7=E3=81=99=E3=80=82=E2=80=8B
+=E3=83=BB=E3=81=8A=E6=94=AF=E6=89=95=E3=81=84=E6=96=B9=E6=B3=95=EF=BC=9A=E4=
+=BA=8B=E5=89=8D=E6=B1=BA=E6=B8=88=E3=80=81=E7=8F=BE=E5=9C=B0=E6=B1=BA=E6=B8=
+=88=E3=81=A8=E3=82=82=E3=81=AB=E3=82=AB=E3=83=BC=E3=83=89=E6=B1=BA=E6=B8=88=
+=E3=81=AE=E3=81=BF(=E7=8F=BE=E9=87=91=E4=B8=8D=E5=8F=AF)=E2=80=8B
+
+*Excuse me for contacting you due to the system switch.
+Dear Cheung Wing Yiu
+
+Thank you for making a reservation at fav TAKAMATSU.=EF=BC=88Reservation ID=
+=EF=BC=9A 10132165=EF=BC=89=E2=80=8B
+=E3=83=BBName of Guests Representative: Cheung Wing Yiu
+=E3=83=BBDate of Stay:=E2=80=8B 2025-03-16 - 2025-03-19
+
+Please click the link below for the issuance of QR code for check-in.=20
+https://system.fav-hotels.com/guest/reservation_info?rc=3Db131901384cd90f0
+On the day of your stay, please have the issued QR code ready for check-in.=
+ =E2=80=8B
+=EF=BC=88a 4-digit PIN will be issued as your room key upon check-in=EF=BC=
+=89=E2=80=8B
+
+&lt;Notes&gt;=E2=80=8B
+=E3=83=BBThis email is sent from a no-reply address.=E2=80=8B
+=E3=83=BBPayment method: Only credit cards payment are accepted for both ad=
+vanced and on-site payment (Cash not accepted).</pre>
+  <img alt=3D"" src=3D"https://tx1ryypy.r.ap-northeast-1.awstrack.me/I0/010=
+60195218b3fdd-d265be62-7067-443b-84e5-48449da29b94-000000/Zw0yKC99Z8IjOyJbG=
+JUmkmDPyx0=3D199" style=3D"display: none; width: 1px; height: 1px;">
+</body>
+</html>
