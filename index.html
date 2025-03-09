@@ -111,71 +111,279 @@
                 width: 100%;
             }
         }
+        
+        /* Add styles for quick links */
+        .quick-links {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            z-index: 100;
+        }
+        
+        .quick-links a {
+            margin-right: 15px;
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        
+        .quick-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Add styles for important info section */
+        .info-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-title {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #4a90e2;
+        }
+        
+        .info-content {
+            margin-bottom: 15px;
+        }
+        
+        .info-content:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            color: #333;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        /* Add styles for collapsible sections */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .section-header:hover {
+            opacity: 0.8;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: #4a90e2;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0 10px;
+            transition: transform 0.3s;
+        }
+        
+        .toggle-btn.collapsed {
+            transform: rotate(-90deg);
+        }
+        
+        .collapsible {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        
+        .collapsible.collapsed {
+            max-height: 0;
+        }
+        
+        /* Modify info-card for collapsible functionality */
+        .info-card .info-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .info-card .info-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        
+        .info-card .info-content.collapsed {
+            max-height: 0;
+        }
     </style>
 </head>
 <body>
     <h1>Shikoku Trip Resources</h1>
     
-    <!-- Document Links Table -->
-    <h2>Trip Documents</h2>
-    <table class="content-table">
-        <tr>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Document</th>
-        </tr>
-        <tr>
-            <td>14/3</td>
-            <td>Takamatsu</td>
-            <td><a href="【fav%20TAKAMATSU】Pre-Check-In%20Information(14%20Mar).eml">Hotel Confirmation</a></td>
-        </tr>
-        <tr>
-            <td>15/3</td>
-            <td>Kotohira</td>
-            <td><a href="kotohiragu_guide-map.pdf">Kotohira Guide Map</a></td>
-        </tr>
-        <tr>
-            <td>15/3</td>
-            <td>Kotohira</td>
-            <td><a href="kotohiragu_illustrated-map.pdf">Illustrated Guide Map</a></td>
-        </tr>
-        <tr>
-            <td>15/3</td>
-            <td>Glamping</td>
-            <td><a href="ご予約ありがとうございます！【GLAMPREMIER Setouchi】.eml">Glamping confirmation</a></td>
-        </tr>
-        <tr>
-            <td>16/3</td>
-            <td>Miyoshi</td>
-            <td><a href="#">Iya Valley Itinerary</a></td>
-        </tr>
-        <tr>
-            <td>17/3</td>
-            <td>Tokushima</td>
-            <td><a href="#">Tokushima Activities</a></td>
-        </tr>
-        <tr>
-            <td>18/3</td>
-            <td>Shodo Island</td>
-            <td><a href="#">Shodo Island Tour</a></td>
-        </tr>
-        <tr>
-            <td>19/3</td>
-            <td>Takamatsu</td>
-            <td><a href="#">Return Information</a></td>
-        </tr>
-    </table>
+    <!-- Quick Links Section -->
+    <div class="quick-links">
+        Quick Links: 
+        <a href="#important">Flight & Lodging Info</a> | 
+        <a href="#documents">Documents</a> | 
+        <a href="#weather">Weather</a>
+    </div>
+    
+    <!-- Important Information Section -->
+    <div class="section-header" onclick="toggleSection('important-section')">
+        <h2 id="important">Flight & LodgingInfo</h2>
+        <button class="toggle-btn">▼</button>
+    </div>
+    <div id="important-section" class="collapsible">
+        <div class="info-card">
+            <div class="info-title" onclick="toggleInfoCard(this)">
+                Flight Information (HK Express)
+                <button class="toggle-btn">▼</button>
+            </div>
+            <div class="info-content">
+                <div class="info-label">Outbound Flight</div>
+                <div class="info-value">
+                    HKG → TAK (UO642)<br>
+                    14 March 2025, Friday<br>
+                    Departure: 09:25 (Terminal 1)<br>
+                    Arrival: 13:45
+                </div>
+                <div class="info-label">Return Flight</div>
+                <div class="info-value">
+                    TAK → HKG<br>
+                    19 March 2025, Wednesday<br>
+                    Departure: 14:35<br>
+                    Arrival: 18:00 (Terminal 1)
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-title" onclick="toggleInfoCard(this)">
+                Hotel Fav Takamatsu (14/3, 16-19/3)
+                <button class="toggle-btn">▼</button>
+            </div>
+            <div class="info-content">
+                <div class="info-label">Address</div>
+                <div class="info-value">2-2-1 Kawara-machi, Takamatsu, Kagawa 760-0052, Japan</div>
+                <div class="info-label">Phone</div>
+                <div class="info-value">+81 87-811-7777</div>
+                <div class="info-label">Check-in</div>
+                <div class="info-value">From 15:00</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-title" onclick="toggleInfoCard(this)">
+                GLAMPREMIER Setouchi (15/3)
+                <button class="toggle-btn">▼</button>
+            </div>
+            <div class="info-content">
+                <div class="info-label">Address</div>
+                <div class="info-value">2098-1 Toyohama, Kanonji, Kagawa 769-0210, Japan</div>
+                <div class="info-label">Phone</div>
+                <div class="info-value">+81 875-56-5338</div>
+                <div class="info-label">Check-in</div>
+                <div class="info-value">15:00 - 17:00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Links Section -->
+    <div class="section-header" onclick="toggleSection('documents-section')">
+        <h2 id="documents">Trip Documents</h2>
+        <button class="toggle-btn">▼</button>
+    </div>
+    <div id="documents-section" class="collapsible">
+        <table class="content-table">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Document</th>
+            </tr>
+            <tr>
+                <td>14/3</td>
+                <td>Takamatsu</td>
+                <td><a href="【fav%20TAKAMATSU】Pre-Check-In%20Information(14%20Mar).eml">Hotel Confirmation</a></td>
+            </tr>
+            <tr>
+                <td>15/3</td>
+                <td>Kotohira</td>
+                <td><a href="kotohiragu_guide-map.pdf">Kotohira Guide Map</a></td>
+            </tr>
+            <tr>
+                <td>15/3</td>
+                <td>Kotohira</td>
+                <td><a href="kotohiragu_illustrated-map.pdf">Illustrated Guide Map</a></td>
+            </tr>
+            <tr>
+                <td>15/3</td>
+                <td>Glamping</td>
+                <td><a href="ご予約ありがとうございます！【GLAMPREMIER Setouchi】.eml">Glamping confirmation</a></td>
+            </tr>
+            <tr>
+                <td>16/3</td>
+                <td>Miyoshi</td>
+                <td><a href="#">Iya Valley Itinerary</a></td>
+            </tr>
+            <tr>
+                <td>17/3</td>
+                <td>Tokushima</td>
+                <td><a href="#">Tokushima Activities</a></td>
+            </tr>
+            <tr>
+                <td>18/3</td>
+                <td>Shodo Island</td>
+                <td><a href="#">Shodo Island Tour</a></td>
+            </tr>
+            <tr>
+                <td>19/3</td>
+                <td>Takamatsu</td>
+                <td><a href="#">Return Information</a></td>
+            </tr>
+        </table>
+    </div>
 
     <!-- Weather Links Section -->
-    <h2>Weather Links</h2>
-    <div id="weather-links-container" class="weather-container">
-        <!-- Weather links will be dynamically inserted here -->
+    <div class="section-header" onclick="toggleSection('weather-section')">
+        <h2 id="weather">Weather Links</h2>
+        <button class="toggle-btn">▼</button>
+    </div>
+    <div id="weather-section" class="collapsible">
+        <div id="weather-links-container" class="weather-container">
+            <!-- Weather links will be dynamically inserted here -->
+        </div>
     </div>
 
     <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const button = section.previousElementSibling.querySelector('.toggle-btn');
+            section.classList.toggle('collapsed');
+            button.classList.toggle('collapsed');
+        }
+
+        function toggleInfoCard(titleElement) {
+            const content = titleElement.nextElementSibling;
+            const button = titleElement.querySelector('.toggle-btn');
+            content.classList.toggle('collapsed');
+            button.classList.toggle('collapsed');
+        }
+
         function generateWeatherLinks() {
             const weatherContainer = document.getElementById('weather-links-container');
-            const today = new Date();
+            
+            // Get current date in Japan timezone
+            const japanTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
+            const today = japanTime;
             
             // Weather link data
             const weatherLinks = [
@@ -225,15 +433,17 @@
                 // Parse the date string (format: "DD/M")
                 const [day, month] = dateStr.split('/').map(num => parseInt(num, 10));
                 
-                // Create Date objects for the target date and today
+                // Create Date objects for the target date and today in Japan time
                 const currentYear = today.getFullYear();
                 
                 // Create target date (assuming the dates are for the current year)
                 let targetDate = new Date(currentYear, month - 1, day);
+                targetDate = new Date(targetDate.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
                 
                 // If the target date is in the past (for this year), assume it's for next year
                 if (targetDate < today) {
                     targetDate = new Date(currentYear + 1, month - 1, day);
+                    targetDate = new Date(targetDate.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
                 }
                 
                 // Calculate days difference - use more reliable method
@@ -241,7 +451,11 @@
                 const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                 const targetDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
                 
-                const diffDays = Math.floor((targetDay - todayDate) / oneDay);
+                // Ensure both dates are in Japan timezone
+                const todayJST = new Date(todayDate.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
+                const targetJST = new Date(targetDay.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
+                
+                const diffDays = Math.floor((targetJST - todayJST) / oneDay);
                 
                 // Add 1 to all calculated offsets to fix the issue
                 return diffDays + 1;
@@ -256,8 +470,21 @@
                 dateTitle.className = 'weather-date';
                 dateTitle.textContent = dateSection.date;
                 
-                // Calculate days from today
-                const daysFromToday = calculateDayParam(dateSection.date);
+                // Calculate days from today for display (without the +1 adjustment)
+                const [day, month] = dateSection.date.split('/').map(num => parseInt(num, 10));
+                const currentYear = today.getFullYear();
+                let targetDate = new Date(currentYear, month - 1, day);
+                
+                if (targetDate < today) {
+                    targetDate = new Date(currentYear + 1, month - 1, day);
+                }
+                
+                const oneDay = 24 * 60 * 60 * 1000;
+                const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                const targetDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+                
+                const daysFromToday = Math.floor((targetDay - todayDate) / oneDay);
+                
                 if (daysFromToday === 0) {
                     dateTitle.textContent += " (Today)";
                 } else if (daysFromToday === 1) {
@@ -274,21 +501,20 @@
                     linkDiv.className = 'weather-location';
                     
                     const a = document.createElement('a');
-                    // Use the calculated day parameter for this date
                     const dayParam = calculateDayParam(dateSection.date);
                     a.href = link.url + dayParam;
                     
-                    // Add a weather icon using HTML entity
+                    // Change to a more neutral icon (thermometer)
                     const iconSpan = document.createElement('span');
                     iconSpan.className = 'weather-icon';
-                    iconSpan.innerHTML = '☀️'; // Weather icon
+                    iconSpan.innerHTML = '🌡️'; // Changed from sun to thermometer
                     a.appendChild(iconSpan);
                     
                     const textSpan = document.createElement('span');
                     textSpan.textContent = link.label;
                     a.appendChild(textSpan);
                     
-                    a.target = "_blank"; // Open in new tab
+                    a.target = "_blank";
                     
                     linkDiv.appendChild(a);
                     card.appendChild(linkDiv);
