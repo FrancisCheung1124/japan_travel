@@ -236,15 +236,15 @@
                     targetDate = new Date(currentYear + 1, month - 1, day);
                 }
                 
-                // Normalize dates to avoid time-of-day issues
-                const todayNormalized = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                const targetNormalized = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+                // Calculate days difference - use more reliable method
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                const targetDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
                 
-                // Calculate days difference
-                const timeDiff = targetNormalized - todayNormalized;
-                const daysDiff = Math.round(timeDiff / (1000 * 60 * 60 * 24));
+                const diffDays = Math.floor((targetDay - todayDate) / oneDay);
                 
-                return daysDiff;
+                // Add 1 to all calculated offsets to fix the issue
+                return diffDays + 1;
             };
 
             // Create HTML for each date section
