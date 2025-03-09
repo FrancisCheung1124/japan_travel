@@ -5,32 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shikoku Links</title>
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #2A2D43 0%, #1C1E2D 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --text-primary: #E8EDF3;
+            --text-secondary: #B4C0D0;
+            --accent-color: #64FFDA;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            --glass-effect: backdrop-filter: blur(10px);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             line-height: 1.6;
+            background: var(--primary-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
         }
         
         .content-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .content-table th {
-            background-color: #f2f2f2;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
             text-align: left;
             padding: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
         }
         
         .content-table td {
             padding: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
         }
         
         .content-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background: rgba(255, 255, 255, 0.02);
         }
         
         .date-section {
@@ -47,7 +68,8 @@
         }
         
         h1, h2 {
-            color: #333;
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
         /* New Weather Links Styling */
@@ -59,22 +81,24 @@
         }
         
         .weather-card {
-            background-color: #f5f7fa;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
             padding: 15px;
             width: calc(33.333% - 15px);
             margin-bottom: 15px;
-            border-left: 4px solid #4a90e2;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-color);
         }
         
         .weather-date {
             font-weight: bold;
             font-size: 18px;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 10px;
             padding-bottom: 5px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .weather-location {
@@ -83,16 +107,16 @@
         
         .weather-location a {
             display: block;
-            color: #4a90e2;
+            color: var(--text-secondary);
             text-decoration: none;
             padding: 6px 10px;
             border-radius: 4px;
-            transition: background-color 0.2s;
+            transition: color 0.3s ease;
         }
         
         .weather-location a:hover {
-            background-color: #e8f0fe;
-            text-decoration: underline;
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .weather-icon {
@@ -112,263 +136,742 @@
             }
         }
         
-        /* Add styles for quick links */
-        .quick-links {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
-            z-index: 100;
+        /* Add styles for tabs */
+        .tab-container {
+            margin: 20px 0;
         }
         
-        .quick-links a {
-            margin-right: 15px;
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        
-        .quick-links a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Add styles for important info section */
-        .info-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .info-title {
-            color: #333;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #4a90e2;
-        }
-        
-        .info-content {
-            margin-bottom: 15px;
-        }
-        
-        .info-content:last-child {
-            margin-bottom: 0;
-        }
-        
-        .info-label {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 3px;
-        }
-        
-        .info-value {
-            color: #333;
-            font-size: 15px;
-            margin-bottom: 10px;
-        }
-        
-        /* Add styles for collapsible sections */
-        .section-header {
+        .tab-buttons {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
         
-        .section-header:hover {
-            opacity: 0.8;
+        .tab-button {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--accent-color);
+        }
+        
+        .tab-button.active {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Remove sticky positioning from quick links since we're using tabs */
+        .quick-links {
+            display: none; /* Hide the quick links since we have tabs now */
+        }
+        
+        /* Remove collapsible styles */
+        .section-header {
+            cursor: default;
         }
         
         .toggle-btn {
-            background: none;
-            border: none;
-            color: #4a90e2;
-            cursor: pointer;
-            font-size: 20px;
-            padding: 0 10px;
-            transition: transform 0.3s;
+            display: none;
         }
         
-        .toggle-btn.collapsed {
-            transform: rotate(-90deg);
+        /* Restore and improve info card styles */
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-color);
         }
         
-        .collapsible {
-            transition: max-height 0.3s ease-out;
-            overflow: hidden;
-        }
-        
-        .collapsible.collapsed {
-            max-height: 0;
-        }
-        
-        /* Modify info-card for collapsible functionality */
         .info-card .info-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
             user-select: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .info-card .info-content {
+            max-height: 1000px;
             transition: max-height 0.3s ease-out;
             overflow: hidden;
         }
         
         .info-card .info-content.collapsed {
             max-height: 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            color: var(--text-primary);
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        /* Add timeline indicator */
+        .timeline-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+        
+        /* Restore toggle button for info cards */
+        .info-card .toggle-btn {
+            display: inline-block;
+            background: none;
+            border: none;
+            color: #4a90e2;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0 10px;
+            transition: transform 0.3s;
+        }
+        
+        .info-card .toggle-btn.collapsed {
+            transform: rotate(-90deg);
+        }
+        
+        /* Add hover effect for info cards */
+        .info-card:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Update weather card styles */
+        .weather-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .weather-date {
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .weather-location a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .weather-location a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Update table styles */
+        .content-table {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .content-table td {
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .content-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .content-table a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .content-table a:hover {
+            text-decoration: underline;
+        }
+
+        /* Add subtle hover effects */
+        .info-card:hover, .weather-card:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Add scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        /* Document timeline styles */
+        .document-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .document-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .document-card {
+            position: relative;
+            margin-left: 80px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .document-card::after {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: calc(50% - 6px);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid var(--primary-gradient);
+        }
+
+        .document-date {
+            position: absolute;
+            left: -75px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .document-location {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .document-link {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .document-link:hover {
+            color: var(--accent-color);
+        }
+
+        .document-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .document-timeline::before {
+                left: 30px;
+            }
+            .document-card {
+                margin-left: 60px;
+            }
+            .document-date {
+                left: -55px;
+            }
+            .document-card::before {
+                left: -20px;
+                width: 20px;
+            }
+            .document-card::after {
+                left: -30px;
+            }
+        }
+
+        /* Weather timeline styles - similar to document timeline */
+        .weather-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .weather-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .weather-day-card {
+            position: relative;
+            margin-left: 80px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .weather-day-card::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .weather-day-card::after {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: calc(50% - 6px);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid var(--primary-gradient);
+        }
+
+        .weather-day-date {
+            position: absolute;
+            left: -75px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .weather-locations {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .weather-location-link {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .weather-location-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .weather-day-info {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .weather-timeline::before {
+                left: 30px;
+            }
+            .weather-day-card {
+                margin-left: 60px;
+            }
+            .weather-day-date {
+                left: -55px;
+            }
+            .weather-day-card::before {
+                left: -20px;
+                width: 20px;
+            }
+            .weather-day-card::after {
+                left: -30px;
+            }
+        }
+
+        /* Location details styling */
+        .location-details {
+            margin-top: 10px;
+        }
+
+        .location-name {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .location-info {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .info-tag {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        .location-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .map-link:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(2px);
+        }
+
+        .document-icon {
+            margin-right: 6px;
         }
     </style>
 </head>
 <body>
-    <h1>Shikoku Trip Resources</h1>
+    <h1>Shikoku In a Nutshell</h1>
     
-    <!-- Quick Links Section -->
-    <div class="quick-links">
-        Quick Links: 
-        <a href="#important">Flight & Lodging Info</a> | 
-        <a href="#documents">Documents</a> | 
-        <a href="#weather">Weather</a>
-    </div>
-    
-    <!-- Important Information Section -->
-    <div class="section-header" onclick="toggleSection('important-section')">
-        <h2 id="important">Flight & LodgingInfo</h2>
-        <button class="toggle-btn">▼</button>
-    </div>
-    <div id="important-section" class="collapsible">
-        <div class="info-card">
-            <div class="info-title" onclick="toggleInfoCard(this)">
-                Flight Information (HK Express)
-                <button class="toggle-btn">▼</button>
-            </div>
-            <div class="info-content">
-                <div class="info-label">Outbound Flight</div>
-                <div class="info-value">
-                    HKG → TAK (UO642)<br>
-                    14 March 2025, Friday<br>
-                    Departure: 09:25 (Terminal 1)<br>
-                    Arrival: 13:45
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="showTab('flight-lodging')">Flight & Lodging</button>
+            <button class="tab-button" onclick="showTab('navigation')">Navigation</button>
+            <button class="tab-button" onclick="showTab('documents')">Documents</button>
+            <button class="tab-button" onclick="showTab('weather')">Weather</button>
+        </div>
+        
+        <!-- Flight & Lodging Tab -->
+        <div id="flight-lodging" class="tab-content active">
+            <div class="info-card">
+                <div class="info-title" onclick="toggleInfoCard(this)">
+                    ✈️ Flight Information (HK Express)
+                    <span class="timeline-indicator">14/3 - 19/3</span>
+                    <button class="toggle-btn">▼</button>
                 </div>
-                <div class="info-label">Return Flight</div>
-                <div class="info-value">
-                    TAK → HKG<br>
-                    19 March 2025, Wednesday<br>
-                    Departure: 14:35<br>
-                    Arrival: 18:00 (Terminal 1)
+                <div class="info-content">
+                    <div class="info-label">🛫 Outbound Flight</div>
+                    <div class="info-value">
+                        🇭🇰 HKG → TAK 🇯🇵 (UO642)<br>
+                        📅 14 March 2025, Friday<br>
+                        🕒 Departure: 09:25 (Terminal 1)<br>
+                        🛬 Arrival: 13:45
+                    </div>
+                    <div class="info-label">🛫 Return Flight</div>
+                    <div class="info-value">
+                        🇯🇵 TAK → HKG 🇭🇰<br>
+                        📅 19 March 2025, Wednesday<br>
+                        🕒 Departure: 14:35<br>
+                        🛬 Arrival: 18:00 (Terminal 1)
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title" onclick="toggleInfoCard(this)">
+                    🏨 Hotel Fav Takamatsu
+                    <span class="timeline-indicator">14/3, 16-19/3</span>
+                    <button class="toggle-btn">▼</button>
+                </div>
+                <div class="info-content">
+                    <div class="info-label">📍 Address</div>
+                    <div class="info-value">2-2-1 Kawara-machi, Takamatsu, Kagawa 760-0052, Japan</div>
+                    <div class="info-label">📞 Phone</div>
+                    <div class="info-value">+81 87-811-7777</div>
+                    <div class="info-label">🕒 Check-in</div>
+                    <div class="info-value">From 15:00</div>
+                    <div class="info-label">🕒 Check-out</div>
+                    <div class="info-value">Until 10:00</div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title" onclick="toggleInfoCard(this)">
+                    ⛺ GLAMPREMIER Setouchi
+                    <span class="timeline-indicator">15/3</span>
+                    <button class="toggle-btn">▼</button>
+                </div>
+                <div class="info-content">
+                    <div class="info-label">📍 Address</div>
+                    <div class="info-value">2098-1 Toyohama, Kanonji, Kagawa 769-0210, Japan</div>
+                    <div class="info-label">📞 Phone</div>
+                    <div class="info-value">+81 875-56-5338</div>
+                    <div class="info-label">🕒 Check-in</div>
+                    <div class="info-value">15:00 - 17:00</div>
                 </div>
             </div>
         </div>
+        
+        <!-- Navigation Tab -->
+        <div id="navigation" class="tab-content">
+            <div class="document-timeline">
+                <div class="document-card">
+                    <div class="document-date">15/3</div>
+                    <div class="document-location">Kotohira</div>
+                    <div class="location-details">
+                        <div class="location-name">
+                            <span class="document-icon">⛩️</span>
+                            Kotohira-gu Shrine
+                        </div>
+                        <div class="location-info">
+                            <span class="info-tag">📍 Map Code:</span> 587 328 396
+                        </div>
+                        <div class="location-links">
+                            <a href="https://goo.gl/maps/rQPBNEJvUVNrp4x49" target="_blank" class="map-link">
+                                <span class="document-icon">🗺️</span> Google Maps
+                            </a>
+                            <a href="https://maps.apple.com/?address=892-1%20Kotohira,%20Kotohira-cho,%20Nakatado-gun,%20Kagawa%20766-0001,%20Japan&auid=7991199917932067948&ll=34.185417,133.810222&lsp=9902&q=Kotohira-gu%20Shrine&t=m" target="_blank" class="map-link">
+                                <span class="document-icon">🍎</span> Apple Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="info-card">
-            <div class="info-title" onclick="toggleInfoCard(this)">
-                Hotel Fav Takamatsu (14/3, 16-19/3)
-                <button class="toggle-btn">▼</button>
-            </div>
-            <div class="info-content">
-                <div class="info-label">Address</div>
-                <div class="info-value">2-2-1 Kawara-machi, Takamatsu, Kagawa 760-0052, Japan</div>
-                <div class="info-label">Phone</div>
-                <div class="info-value">+81 87-811-7777</div>
-                <div class="info-label">Check-in</div>
-                <div class="info-value">From 15:00</div>
+                <div class="document-card">
+                    <div class="document-date">15/3</div>
+                    <div class="document-location">Kanonji</div>
+                    <div class="location-details">
+                        <div class="location-name">
+                            <span class="document-icon">⛺</span>
+                            GLAMPREMIER Setouchi
+                        </div>
+                        <div class="location-info">
+                            <span class="info-tag">📍 Map Code:</span> 631 488 859*88
+                        </div>
+                        <div class="location-links">
+                            <a href="https://goo.gl/maps/N5H8YPFPFvVBGp1S7" target="_blank" class="map-link">
+                                <span class="document-icon">🗺️</span> Google Maps
+                            </a>
+                            <a href="#" target="_blank" class="map-link">
+                                <span class="document-icon">🚗</span> Navigation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">16/3</div>
+                    <div class="document-location">Miyoshi</div>
+                    <div class="location-details">
+                        <div class="location-name">
+                            <span class="document-icon">🌉</span>
+                            Iya Kazurabashi Bridge
+                        </div>
+                        <div class="location-info">
+                            <span class="info-tag">📍 Map Code:</span> 627 843 088
+                        </div>
+                        <div class="location-links">
+                            <a href="https://goo.gl/maps/N5H8YPFPFvVBGp1S7" target="_blank" class="map-link">
+                                <span class="document-icon">🗺️</span> Google Maps
+                            </a>
+                            <a href="#" target="_blank" class="map-link">
+                                <span class="document-icon">📸</span> Photos
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        
+        <!-- Documents Tab -->
+        <div id="documents" class="tab-content">
+            <div class="document-timeline">
+                <div class="document-card">
+                    <div class="document-date">14/3</div>
+                    <div class="document-location">Takamatsu</div>
+                    <a href="【fav%20TAKAMATSU】Pre-Check-In%20Information(14%20Mar).eml" class="document-link">
+                        <span class="document-icon">🏨</span>
+                        Hotel Confirmation
+                    </a>
+                </div>
 
-        <div class="info-card">
-            <div class="info-title" onclick="toggleInfoCard(this)">
-                GLAMPREMIER Setouchi (15/3)
-                <button class="toggle-btn">▼</button>
-            </div>
-            <div class="info-content">
-                <div class="info-label">Address</div>
-                <div class="info-value">2098-1 Toyohama, Kanonji, Kagawa 769-0210, Japan</div>
-                <div class="info-label">Phone</div>
-                <div class="info-value">+81 875-56-5338</div>
-                <div class="info-label">Check-in</div>
-                <div class="info-value">15:00 - 17:00</div>
+                <div class="document-card">
+                    <div class="document-date">15/3</div>
+                    <div class="document-location">Kotohira</div>
+                    <a href="kotohiragu_guide-map.pdf" class="document-link">
+                        <span class="document-icon">🗺️</span>
+                        Kotohira Guide Map
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">15/3</div>
+                    <div class="document-location">Kotohira</div>
+                    <a href="kotohiragu_illustrated-map.pdf" class="document-link">
+                        <span class="document-icon">🎨</span>
+                        Illustrated Guide Map
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">15/3</div>
+                    <div class="document-location">Glamping</div>
+                    <a href="ご予約ありがとうございます！【GLAMPREMIER Setouchi】.eml" class="document-link">
+                        <span class="document-icon">⛺</span>
+                        Glamping confirmation
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">16/3</div>
+                    <div class="document-location">Miyoshi</div>
+                    <a href="#" class="document-link">
+                        <span class="document-icon">🏞️</span>
+                        Iya Valley Itinerary
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">17/3</div>
+                    <div class="document-location">Tokushima</div>
+                    <a href="#" class="document-link">
+                        <span class="document-icon">🎭</span>
+                        Tokushima Activities
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">18/3</div>
+                    <div class="document-location">Shodo Island</div>
+                    <a href="#" class="document-link">
+                        <span class="document-icon">🏝️</span>
+                        Shodo Island Tour
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-date">19/3</div>
+                    <div class="document-location">Takamatsu</div>
+                    <a href="#" class="document-link">
+                        <span class="document-icon">✈️</span>
+                        Return Information
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Document Links Section -->
-    <div class="section-header" onclick="toggleSection('documents-section')">
-        <h2 id="documents">Trip Documents</h2>
-        <button class="toggle-btn">▼</button>
-    </div>
-    <div id="documents-section" class="collapsible">
-        <table class="content-table">
-            <tr>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Document</th>
-            </tr>
-            <tr>
-                <td>14/3</td>
-                <td>Takamatsu</td>
-                <td><a href="【fav%20TAKAMATSU】Pre-Check-In%20Information(14%20Mar).eml">Hotel Confirmation</a></td>
-            </tr>
-            <tr>
-                <td>15/3</td>
-                <td>Kotohira</td>
-                <td><a href="kotohiragu_guide-map.pdf">Kotohira Guide Map</a></td>
-            </tr>
-            <tr>
-                <td>15/3</td>
-                <td>Kotohira</td>
-                <td><a href="kotohiragu_illustrated-map.pdf">Illustrated Guide Map</a></td>
-            </tr>
-            <tr>
-                <td>15/3</td>
-                <td>Glamping</td>
-                <td><a href="ご予約ありがとうございます！【GLAMPREMIER Setouchi】.eml">Glamping confirmation</a></td>
-            </tr>
-            <tr>
-                <td>16/3</td>
-                <td>Miyoshi</td>
-                <td><a href="#">Iya Valley Itinerary</a></td>
-            </tr>
-            <tr>
-                <td>17/3</td>
-                <td>Tokushima</td>
-                <td><a href="#">Tokushima Activities</a></td>
-            </tr>
-            <tr>
-                <td>18/3</td>
-                <td>Shodo Island</td>
-                <td><a href="#">Shodo Island Tour</a></td>
-            </tr>
-            <tr>
-                <td>19/3</td>
-                <td>Takamatsu</td>
-                <td><a href="#">Return Information</a></td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Weather Links Section -->
-    <div class="section-header" onclick="toggleSection('weather-section')">
-        <h2 id="weather">Weather Links</h2>
-        <button class="toggle-btn">▼</button>
-    </div>
-    <div id="weather-section" class="collapsible">
-        <div id="weather-links-container" class="weather-container">
-            <!-- Weather links will be dynamically inserted here -->
+        
+        <!-- Weather Tab -->
+        <div id="weather" class="tab-content">
+            <div id="weather-links-container" class="weather-timeline">
+                <!-- Weather links will be dynamically inserted here -->
+            </div>
         </div>
     </div>
 
     <script>
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            const button = section.previousElementSibling.querySelector('.toggle-btn');
-            section.classList.toggle('collapsed');
-            button.classList.toggle('collapsed');
+        function showTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+            
+            // Deactivate all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let button of tabButtons) {
+                button.classList.remove('active');
+            }
+            
+            // Show selected tab content and activate its button
+            document.getElementById(tabId).classList.add('active');
+            const activeButton = Array.from(tabButtons).find(button => 
+                button.textContent.toLowerCase().includes(tabId.replace('-', ' '))
+            );
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
         }
 
         function toggleInfoCard(titleElement) {
@@ -385,45 +888,45 @@
             const japanTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
             const today = japanTime;
             
-            // Weather link data
+            // Updated Weather link data with Chinese names
             const weatherLinks = [
                 {
                     date: "14/3",
                     links: [
-                        { label: "Takamatsu-shi", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                        { label: "Takamatsu-shi (高松市)", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
                     ]
                 },
                 {
                     date: "15/3",
                     links: [
-                        { label: "Kotohira", url: "https://www.accuweather.com/en/jp/kotohira-cho/218416/daily-weather-forecast/218416?day=" },
-                        { label: "Glamping", url: "https://www.accuweather.com/en/jp/toyohamacho-wada/218429/daily-weather-forecast/218429?day=" }
+                        { label: "Kotohira (琴平町)", url: "https://www.accuweather.com/en/jp/kotohira-cho/218416/daily-weather-forecast/218416?day=" },
+                        { label: "Glamping (豊浜町和田)", url: "https://www.accuweather.com/en/jp/toyohamacho-wada/218429/daily-weather-forecast/218429?day=" }
                     ]
                 },
                 {
                     date: "16/3",
                     links: [
-                        { label: "Snow Park", url: "https://www.accuweather.com/en/jp/onoharacho-marui/2387475/daily-weather-forecast/2387475?day=" },
-                        { label: "Sightseeing", url: "https://www.accuweather.com/en/jp/miyoshi-shi/1-2333814_1_al/daily-weather-forecast/1-2333814_1_al?day=" },
-                        { label: "Hotel", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                        { label: "Snow Park (大野原町丸井)", url: "https://www.accuweather.com/en/jp/onoharacho-marui/2387475/daily-weather-forecast/2387475?day=" },
+                        { label: "Miyoshi-shi (三好市)", url: "https://www.accuweather.com/en/jp/miyoshi-shi/1-2333814_1_al/daily-weather-forecast/1-2333814_1_al?day=" },
+                        { label: "Takamatsu-shi (高松市)", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
                     ]
                 },
                 {
                     date: "17/3",
                     links: [
-                        { label: "Tokushima-shi", url: "https://www.accuweather.com/en/jp/tokushima-shi/1-226392_1_al/daily-weather-forecast/1-226392_1_al?day=" }
+                        { label: "Tokushima-shi (徳島市)", url: "https://www.accuweather.com/en/jp/tokushima-shi/1-226392_1_al/daily-weather-forecast/1-226392_1_al?day=" }
                     ]
                 },
                 {
                     date: "18/3",
                     links: [
-                        { label: "Shodo", url: "https://www.accuweather.com/en/jp/shodo/2413188/daily-weather-forecast/2413188?day=" }
+                        { label: "Shodo Island (小豆島)", url: "https://www.accuweather.com/en/jp/shodo/2413188/daily-weather-forecast/2413188?day=" }
                     ]
                 },
                 {
                     date: "19/3",
                     links: [
-                        { label: "Takamatsu-shi", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                        { label: "Takamatsu-shi (高松市)", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
                     ]
                 }
             ];
@@ -464,13 +967,16 @@
             // Create HTML for each date section
             weatherLinks.forEach(dateSection => {
                 const card = document.createElement('div');
-                card.className = 'weather-card';
+                card.className = 'weather-day-card';
                 
-                const dateTitle = document.createElement('div');
-                dateTitle.className = 'weather-date';
-                dateTitle.textContent = dateSection.date;
+                const dateLabel = document.createElement('div');
+                dateLabel.className = 'weather-day-date';
+                dateLabel.textContent = dateSection.date;
                 
-                // Calculate days from today for display (without the +1 adjustment)
+                const locationsDiv = document.createElement('div');
+                locationsDiv.className = 'weather-locations';
+                
+                // Calculate days from today for display
                 const [day, month] = dateSection.date.split('/').map(num => parseInt(num, 10));
                 const currentYear = today.getFullYear();
                 let targetDate = new Date(currentYear, month - 1, day);
@@ -485,52 +991,51 @@
                 
                 const daysFromToday = Math.floor((targetDay - todayDate) / oneDay);
                 
-                if (daysFromToday === 0) {
-                    dateTitle.textContent += " (Today)";
-                } else if (daysFromToday === 1) {
-                    dateTitle.textContent += " (Tomorrow)";
-                } else {
-                    dateTitle.textContent += ` (${daysFromToday} days from today)`;
-                }
-                
-                card.appendChild(dateTitle);
-                
                 // Create links for this date
                 dateSection.links.forEach(link => {
-                    const linkDiv = document.createElement('div');
-                    linkDiv.className = 'weather-location';
-                    
                     const a = document.createElement('a');
                     const dayParam = calculateDayParam(dateSection.date);
                     a.href = link.url + dayParam;
+                    a.className = 'weather-location-link';
+                    a.target = "_blank";
                     
-                    // Change to a more neutral icon (thermometer)
                     const iconSpan = document.createElement('span');
                     iconSpan.className = 'weather-icon';
-                    iconSpan.innerHTML = '🌡️'; // Changed from sun to thermometer
+                    iconSpan.innerHTML = '🌡️';
                     a.appendChild(iconSpan);
                     
                     const textSpan = document.createElement('span');
                     textSpan.textContent = link.label;
                     a.appendChild(textSpan);
                     
-                    a.target = "_blank";
-                    
-                    linkDiv.appendChild(a);
-                    card.appendChild(linkDiv);
+                    locationsDiv.appendChild(a);
                 });
                 
+                // Add day info
+                const dayInfo = document.createElement('div');
+                dayInfo.className = 'weather-day-info';
+                if (daysFromToday === 0) {
+                    dayInfo.textContent = "Today";
+                } else if (daysFromToday === 1) {
+                    dayInfo.textContent = "Tomorrow";
+                } else {
+                    dayInfo.textContent = `${daysFromToday} days from today`;
+                }
+                
+                card.appendChild(dateLabel);
+                card.appendChild(locationsDiv);
+                card.appendChild(dayInfo);
                 weatherContainer.appendChild(card);
             });
         }
 
-        // Call the function to generate weather links on page load
+        // Modified window.onload
         window.onload = function() {
             generateWeatherLinks();
-            // Call any existing onload functions if present
             if (typeof generateLinks === 'function') {
                 generateLinks();
             }
+            // No need for collapse logic anymore
         };
     </script>
 </body>
