@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shikoku Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .content-table th {
+            background-color: #f2f2f2;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .content-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .content-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .date-section {
+            margin-bottom: 20px;
+        }
+        
+        .date-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .weather-link {
+            margin-bottom: 5px;
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+        
+        /* New Weather Links Styling */
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .weather-card {
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: calc(33.333% - 15px);
+            margin-bottom: 15px;
+            border-left: 4px solid #4a90e2;
+        }
+        
+        .weather-date {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .weather-location {
+            margin: 8px 0;
+        }
+        
+        .weather-location a {
+            display: block;
+            color: #4a90e2;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .weather-location a:hover {
+            background-color: #e8f0fe;
+            text-decoration: underline;
+        }
+        
+        .weather-icon {
+            margin-right: 8px;
+            color: #5c9ce6;
+        }
+        
+        @media (max-width: 768px) {
+            .weather-card {
+                width: calc(50% - 15px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .weather-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Shikoku Trip Resources</h1>
+    
+    <!-- Document Links Table -->
+    <h2>Trip Documents</h2>
+    <table class="content-table">
+        <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Document</th>
+        </tr>
+        <tr>
+            <td>14/3</td>
+            <td>Takamatsu</td>
+            <td><a href="【fav%20TAKAMATSU】Pre-Check-In%20Information(14%20Mar).eml">Hotel Confirmation</a></td>
+        </tr>
+        <tr>
+            <td>15/3</td>
+            <td>Kotohira</td>
+            <td><a href="kotohiragu_guide-map.pdf">Kotohira Guide Map</a></td>
+        </tr>
+        <tr>
+            <td>15/3</td>
+            <td>Kotohira</td>
+            <td><a href="kotohiragu_illustrated-map.pdf">Illustrated Guide Map</a></td>
+        </tr>
+        <tr>
+            <td>15/3</td>
+            <td>Glamping</td>
+            <td><a href="ご予約ありがとうございます！【GLAMPREMIER Setouchi】.eml">Glamping confirmation</a></td>
+        </tr>
+        <tr>
+            <td>16/3</td>
+            <td>Miyoshi</td>
+            <td><a href="#">Iya Valley Itinerary</a></td>
+        </tr>
+        <tr>
+            <td>17/3</td>
+            <td>Tokushima</td>
+            <td><a href="#">Tokushima Activities</a></td>
+        </tr>
+        <tr>
+            <td>18/3</td>
+            <td>Shodo Island</td>
+            <td><a href="#">Shodo Island Tour</a></td>
+        </tr>
+        <tr>
+            <td>19/3</td>
+            <td>Takamatsu</td>
+            <td><a href="#">Return Information</a></td>
+        </tr>
+    </table>
+
+    <!-- Weather Links Section -->
+    <h2>Weather Links</h2>
+    <div id="weather-links-container" class="weather-container">
+        <!-- Weather links will be dynamically inserted here -->
+    </div>
+
+    <script>
+        function generateWeatherLinks() {
+            const weatherContainer = document.getElementById('weather-links-container');
+            const today = new Date();
+            
+            // Weather link data
+            const weatherLinks = [
+                {
+                    date: "14/3",
+                    links: [
+                        { label: "Takamatsu-shi", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                    ]
+                },
+                {
+                    date: "15/3",
+                    links: [
+                        { label: "Kotohira", url: "https://www.accuweather.com/en/jp/kotohira-cho/218416/daily-weather-forecast/218416?day=" },
+                        { label: "Glamping", url: "https://www.accuweather.com/en/jp/toyohamacho-wada/218429/daily-weather-forecast/218429?day=" }
+                    ]
+                },
+                {
+                    date: "16/3",
+                    links: [
+                        { label: "Snow Park", url: "https://www.accuweather.com/en/jp/onoharacho-marui/2387475/daily-weather-forecast/2387475?day=" },
+                        { label: "Sightseeing", url: "https://www.accuweather.com/en/jp/miyoshi-shi/1-2333814_1_al/daily-weather-forecast/1-2333814_1_al?day=" },
+                        { label: "Hotel", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                    ]
+                },
+                {
+                    date: "17/3",
+                    links: [
+                        { label: "Tokushima-shi", url: "https://www.accuweather.com/en/jp/tokushima-shi/1-226392_1_al/daily-weather-forecast/1-226392_1_al?day=" }
+                    ]
+                },
+                {
+                    date: "18/3",
+                    links: [
+                        { label: "Shodo", url: "https://www.accuweather.com/en/jp/shodo/2413188/daily-weather-forecast/2413188?day=" }
+                    ]
+                },
+                {
+                    date: "19/3",
+                    links: [
+                        { label: "Takamatsu-shi", url: "https://www.accuweather.com/en/jp/takamatsu-shi/224352/daily-weather-forecast/224352?day=" }
+                    ]
+                }
+            ];
+
+            // Calculate the day parameter based on date string
+            const calculateDayParam = (dateStr) => {
+                // Parse the date string (format: "DD/M")
+                const [day, month] = dateStr.split('/').map(num => parseInt(num, 10));
+                
+                // Create Date objects for the target date and today
+                const currentYear = today.getFullYear();
+                
+                // Create target date (assuming the dates are for the current year)
+                let targetDate = new Date(currentYear, month - 1, day);
+                
+                // If the target date is in the past (for this year), assume it's for next year
+                if (targetDate < today) {
+                    targetDate = new Date(currentYear + 1, month - 1, day);
+                }
+                
+                // Normalize dates to avoid time-of-day issues
+                const todayNormalized = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                const targetNormalized = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+                
+                // Calculate days difference
+                const timeDiff = targetNormalized - todayNormalized;
+                const daysDiff = Math.round(timeDiff / (1000 * 60 * 60 * 24));
+                
+                return daysDiff;
+            };
+
+            // Create HTML for each date section
+            weatherLinks.forEach(dateSection => {
+                const card = document.createElement('div');
+                card.className = 'weather-card';
+                
+                const dateTitle = document.createElement('div');
+                dateTitle.className = 'weather-date';
+                dateTitle.textContent = dateSection.date;
+                
+                // Calculate days from today
+                const daysFromToday = calculateDayParam(dateSection.date);
+                if (daysFromToday === 0) {
+                    dateTitle.textContent += " (Today)";
+                } else if (daysFromToday === 1) {
+                    dateTitle.textContent += " (Tomorrow)";
+                } else {
+                    dateTitle.textContent += ` (${daysFromToday} days from today)`;
+                }
+                
+                card.appendChild(dateTitle);
+                
+                // Create links for this date
+                dateSection.links.forEach(link => {
+                    const linkDiv = document.createElement('div');
+                    linkDiv.className = 'weather-location';
+                    
+                    const a = document.createElement('a');
+                    // Use the calculated day parameter for this date
+                    const dayParam = calculateDayParam(dateSection.date);
+                    a.href = link.url + dayParam;
+                    
+                    // Add a weather icon using HTML entity
+                    const iconSpan = document.createElement('span');
+                    iconSpan.className = 'weather-icon';
+                    iconSpan.innerHTML = '☀️'; // Weather icon
+                    a.appendChild(iconSpan);
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = link.label;
+                    a.appendChild(textSpan);
+                    
+                    a.target = "_blank"; // Open in new tab
+                    
+                    linkDiv.appendChild(a);
+                    card.appendChild(linkDiv);
+                });
+                
+                weatherContainer.appendChild(card);
+            });
+        }
+
+        // Call the function to generate weather links on page load
+        window.onload = function() {
+            generateWeatherLinks();
+            // Call any existing onload functions if present
+            if (typeof generateLinks === 'function') {
+                generateLinks();
+            }
+        };
+    </script>
+</body>
+</html> 
